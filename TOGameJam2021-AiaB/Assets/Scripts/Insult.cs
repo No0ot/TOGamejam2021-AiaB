@@ -24,7 +24,7 @@ public class Insult : MonoBehaviour
     {
         if(m_eDamageType == 0)
         {
-            m_eDamageType = (InsultDamageType)Random.Range(1, 3);
+            m_eDamageType = (InsultDamageType)Random.Range(1, 4);
         }
     }
 

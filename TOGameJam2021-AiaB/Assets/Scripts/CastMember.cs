@@ -30,7 +30,10 @@ public class CastMember : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(m_fConfidence <= 0)
+        {
+            KillSelf();
+        }
     }
 
     public void TakeDamage(float damagevalue, InsultDamageType damagetype)
@@ -80,5 +83,10 @@ public class CastMember : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void KillSelf()
+    {
+        //Removes itself from the gamemanagers list
     }
 }
