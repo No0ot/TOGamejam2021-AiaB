@@ -8,16 +8,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
 
     [SerializeField]
+    [Tooltip("Should the order in which the auditions are presented be randomized each round?")]
+    private bool randomizeAuditionOrder;
+    [SerializeField]
     [Tooltip("Complete list of all potential auditions, from which a random selection will be chosen.")]
     private List<GameObject> fullAuditionsList;
     private List<GameObject> selectedAuditionsList;
     private List<GameObject> survivingAuditionsList;
     [SerializeField]
     [Tooltip("The number of auditions that will be chosen from the full list, must be less than the number of auditions in the list.")]
+    [Range(1, 100)]
     private int numAuditions;
     private GameObject currentAudition;
     [SerializeField]
     [Tooltip("The number of rounds that the player has in which to knock out all of the auditions.")]
+    [Range(1, 100)]
     private int numRounds;
     private int currentRound;
     private List<GameObject> auditionsLeftInRound;
@@ -25,6 +30,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        if (fullAuditionsList.Count < 1)
+            Debug.LogError("Full Auditions List is not yet populated!");
+        if (numAuditions < 1)
+            Debug.LogError("Num Auditions is < 1!");
+        if (numRounds < 1)
+            Debug.LogError("Num Rounds is < 1!");
+
         SelectAuditions();
 
         currentRound = -1;
@@ -40,20 +52,21 @@ public class GameManager : MonoBehaviour
     {
         numAuditions = Mathf.Min(numAuditions, fullAuditionsList.Count);
         List<GameObject> availableAuditionsList = fullAuditionsList;
-        selectedAuditionsList = new List<GameObject>(numAuditions);
+        selectedAuditionsList = new List<GameObject>();
         
         for (int i = 0; i < numAuditions; i++)
         {
             int r = Random.Range(0, availableAuditionsList.Count);
-            selectedAuditionsList[i] = availableAuditionsList[r];
+            selectedAuditionsList.Add(availableAuditionsList[r]);
             availableAuditionsList.RemoveAt(r);
         }
 
+        survivingAuditionsList = new List<GameObject>();
         foreach (GameObject selectedAudition in selectedAuditionsList)
         {
             GameObject audition = Instantiate(selectedAudition);
-            audition.SetActive(false);
             survivingAuditionsList.Add(audition);
+            audition.SetActive(false);
         }
     }
 
@@ -66,17 +79,32 @@ public class GameManager : MonoBehaviour
     // This function is to select the next audition who will be shown, from the list of auditions remaining in the round.
     private void NextAudition()
     {
+        // Deactivate the previous audition, if it wasn't already inactive
         if (currentAudition != null)
             currentAudition.SetActive(false);
 
+        // Check if the round is now over
         if(auditionsLeftInRound.Count < 1)
             ShowRecapScene();
 
-        int r = Random.Range(0, auditionsLeftInRound.Count);
-        currentAudition = auditionsLeftInRound[r];
-        auditionsLeftInRound.RemoveAt(r);
+        // Pick the next audition
+        if (randomizeAuditionOrder)
+        {
+            int r = Random.Range(0, auditionsLeftInRound.Count);
+            currentAudition = auditionsLeftInRound[r];
+            auditionsLeftInRound.RemoveAt(r);
+        }
+        else
+        {
+            currentAudition = auditionsLeftInRound[0];
+            auditionsLeftInRound.RemoveAt(0);
+        }
 
+        // Activate the new audition
         currentAudition.SetActive(true);
+
+        // Set any relevant visuals
+        currentAudition.transform.position = Vector2.zero;
     }
 
     // This function is to proceed to the next round. It will create a new list of auditions for the start of the round
@@ -96,6 +124,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if (auditionsEliminatedByRound == null)
+                auditionsEliminatedByRound = new List<List<GameObject>>();
             auditionsEliminatedByRound.Add(new List<GameObject>());
             auditionsLeftInRound = survivingAuditionsList;
         }
