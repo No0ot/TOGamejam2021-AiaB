@@ -147,9 +147,9 @@ public class GameManager : MonoBehaviour
 
 
     // Returns the currently auditioning character.
-    public CastMember GetCurrentAudition()
+    public GameObject GetCurrentAudition()
     {
-        return currentAudition.GetComponent<CastMember>();
+        return currentAudition;
     }
 
     // Callbacks

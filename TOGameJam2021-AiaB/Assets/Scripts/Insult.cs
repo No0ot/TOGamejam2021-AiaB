@@ -17,7 +17,7 @@ public class Insult : MonoBehaviour
     [SerializeField]
     InsultDamageType m_eDamageType = 0;
     [SerializeField]
-    CastMember m_gAssaultedActor;
+    GameObject m_gAssaultedActor;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +36,8 @@ public class Insult : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //m_gAssualtedActor = GameManger.Instance.GetCurrentActor()
-        m_gAssaultedActor.TakeDamage(m_fInsultDamage, m_eDamageType);
+        m_gAssaultedActor = GameManager.Instance.GetCurrentAudition();
+        m_gAssaultedActor.GetComponent<CastMember>().TakeDamage(m_fInsultDamage, m_eDamageType);
         Destroy(this.gameObject);
     }
 }
