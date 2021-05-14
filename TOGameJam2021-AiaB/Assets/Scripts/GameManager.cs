@@ -9,19 +9,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Complete list of all potential auditions, from which a random selection will be chosen.")]
-    private List<CastMember> fullAuditionsList;
-    private List<CastMember> selectedAuditionsList;
-    private List<CastMember> survivingAuditionsList;
+    private List<GameObject> fullAuditionsList;
+    private List<GameObject> selectedAuditionsList;
+    private List<GameObject> survivingAuditionsList;
     [SerializeField]
     [Tooltip("The number of auditions that will be chosen from the full list, must be less than the number of auditions in the list.")]
     private int numAuditions;
-    private CastMember currentAudition;
+    private GameObject currentAudition;
     [SerializeField]
     [Tooltip("The number of rounds that the player has in which to knock out all of the auditions.")]
     private int numRounds;
     private int currentRound;
-    private List<CastMember> auditionsLeftInRound;
-    private List<List<CastMember>> auditionsEliminatedByRound;
+    private List<GameObject> auditionsLeftInRound;
+    private List<List<GameObject>> auditionsEliminatedByRound;
 
     void Start()
     {
@@ -31,12 +31,16 @@ public class GameManager : MonoBehaviour
         NextRound();
     }
 
+
+    // ----- ----- ----- ----- ----- Game Loop functions ----- ----- ----- ----- -----
+
+
     // This function is to select the initial pool of auditions that will be in the game from the total list of all available characters.
     private void SelectAuditions()
     {
         numAuditions = Mathf.Min(numAuditions, fullAuditionsList.Count);
-        List<CastMember> availableAuditionsList = fullAuditionsList;
-        selectedAuditionsList = new List<CastMember>(numAuditions);
+        List<GameObject> availableAuditionsList = fullAuditionsList;
+        selectedAuditionsList = new List<GameObject>(numAuditions);
         
         for (int i = 0; i < numAuditions; i++)
         {
@@ -45,15 +49,15 @@ public class GameManager : MonoBehaviour
             availableAuditionsList.RemoveAt(r);
         }
 
-        survivingAuditionsList = selectedAuditionsList;
+        foreach (GameObject selectedAudition in selectedAuditionsList)
+        {
+            GameObject audition = Instantiate(selectedAudition);
+            audition.SetActive(false);
+            survivingAuditionsList.Add(audition);
+        }
     }
 
-    // Returns the currently auditioning character.
-    public CastMember GetCurrentAudition()
-    {
-        return currentAudition;
-    }
-
+    // This function displays the recap scene at the end of the round, from which the player can then move on to the next round.
     private void ShowRecapScene()
     {
         Debug.Log("ShowRecapScene function not yet implemented.");
@@ -62,12 +66,17 @@ public class GameManager : MonoBehaviour
     // This function is to select the next audition who will be shown, from the list of auditions remaining in the round.
     private void NextAudition()
     {
+        if (currentAudition != null)
+            currentAudition.SetActive(false);
+
         if(auditionsLeftInRound.Count < 1)
             ShowRecapScene();
 
         int r = Random.Range(0, auditionsLeftInRound.Count);
         currentAudition = auditionsLeftInRound[r];
         auditionsLeftInRound.RemoveAt(r);
+
+        currentAudition.SetActive(true);
     }
 
     // This function is to proceed to the next round. It will create a new list of auditions for the start of the round
@@ -87,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            auditionsEliminatedByRound.Add(new List<CastMember>());
+            auditionsEliminatedByRound.Add(new List<GameObject>());
             auditionsLeftInRound = survivingAuditionsList;
         }
 
@@ -101,5 +110,26 @@ public class GameManager : MonoBehaviour
     private void WinGame()
     {
         Debug.Log("WinGame function not yet implemented.");
+    }
+
+
+    // ----- ----- ----- ----- ----- Public functions ----- ----- ----- ----- -----
+
+
+    // Returns the currently auditioning character.
+    public CastMember GetCurrentAudition()
+    {
+        return currentAudition.GetComponent<CastMember>();
+    }
+
+    // Callbacks
+    public void OnEliminate(CastMember castMember)
+    {
+        GameObject eliminatee = castMember.gameObject;
+        eliminatee.SetActive(false);
+        int i = survivingAuditionsList.FindIndex(c => c == eliminatee);
+        survivingAuditionsList.RemoveAt(i);
+
+        auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(eliminatee);
     }
 }
