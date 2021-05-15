@@ -29,6 +29,7 @@ public class Insult : MonoBehaviour
         {
             m_eDamageType = (InsultDamageType)Random.Range(1, 4);
         }
+
         switch(m_eDamageType)
         {
             case InsultDamageType.GREEN:
