@@ -30,7 +30,13 @@ public class Insult : MonoBehaviour
             m_eDamageType = (InsultDamageType)Random.Range(1, 4);
         }
 
-        switch(m_eDamageType)
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        switch (m_eDamageType)
         {
             case InsultDamageType.GREEN:
                 GetComponent<SpriteRenderer>().color = Color.green;
@@ -46,17 +52,13 @@ public class Insult : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
         m_gAssaultedActor = GameManager.Instance.GetCurrentAudition();
         m_gAssaultedActor.GetComponent<CastMember>().TakeDamage(m_fInsultDamage, m_eDamageType);
-        Destroy(this.gameObject);
+        Vector2 newposition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1.0f);
+        this.gameObject.transform.position = newposition;
+        gameObject.SetActive(false);
     }
 
     private void OnMouseEnter()
@@ -69,5 +71,10 @@ public class Insult : MonoBehaviour
     {
         Vector2 newposition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1.0f);
         this.gameObject.transform.position = newposition;
+    }
+
+    public void setText(string newtext)
+    {
+        m_tInsultText.SetText(newtext);
     }
 }

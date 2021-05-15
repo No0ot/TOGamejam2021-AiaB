@@ -49,11 +49,14 @@ public class CastMember : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_fCurrentConfidence <= 0)
+        if (gameObject.activeInHierarchy)
         {
-            KillSelf();
+            if (m_fCurrentConfidence <= 0)
+            {
+                ConfidenceMeter.SetActive(false);
+                KillSelf();
+            }
         }
-       
     }
 
     public void TakeDamage(float damagevalue, InsultDamageType damagetype)
@@ -122,6 +125,7 @@ public class CastMember : MonoBehaviour
 
     void KillSelf()
     {
+        GameManager.Instance.OnEliminate(this);
         //Removes itself from the gamemanagers list
     }
 }
