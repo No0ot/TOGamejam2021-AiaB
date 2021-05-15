@@ -2,22 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InsultArmorType
-{
-    NONE,
-    RED,
-    YELLOW,
-    GREEN,
-    NUM_ARMOR_TYPES
-}
-
 
 public class CastMember : MonoBehaviour
 {
     float m_fMaxConfidence = 10.0f;
     float m_fCurrentConfidence;
-    [SerializeField]
-    InsultArmorType m_eArmor;
+
     [SerializeField]
     GameObject ConfidenceMeter;
     [SerializeField]
@@ -26,30 +16,16 @@ public class CastMember : MonoBehaviour
     public int[] m_CostumeEffectiveness;
     [SerializeField]
     public int[] m_InterestEffectiveness;
+    [SerializeField]
+    Sprite m_Headshot;
+    [SerializeField]
+    string m_CharacterDescription;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_fCurrentConfidence = m_fMaxConfidence;
 
-        if (m_eArmor == 0)
-        {
-            m_eArmor = (InsultArmorType)Random.Range(1, 3);
-        }
-        switch (m_eArmor)
-        {
-            case InsultArmorType.GREEN:
-                GetComponent<SpriteRenderer>().color = Color.green;
-                break;
-            case InsultArmorType.RED:
-                GetComponent<SpriteRenderer>().color = Color.red;
-                break;
-            case InsultArmorType.YELLOW:
-                GetComponent<SpriteRenderer>().color = Color.yellow;
-                break;
-            default:
-                break;
-        }
+        m_fCurrentConfidence = m_fMaxConfidence;
     }
 
     // Update is called once per frame

@@ -178,11 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fa233ab91adb34b9e14b243c02ec39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eArmor: 0
   ConfidenceMeter: {fileID: 930814635333607097}
   m_ActingEffectiveness: 02000000020000000100000001000000
   m_CostumeEffectiveness: 00000000020000000300000002000000
   m_InterestEffectiveness: 02000000010000000100000001000000
+  m_Headshot: {fileID: 0}
+  m_CharacterDescription: blah blah blah
 --- !u!1 &6139464665412095872
 GameObject:
   m_ObjectHideFlags: 0
