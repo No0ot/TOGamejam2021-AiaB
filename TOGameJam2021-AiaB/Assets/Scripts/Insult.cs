@@ -60,9 +60,10 @@ public class Insult : MonoBehaviour
     private void OnMouseDown()
     {
         m_gAssaultedActor = GameManager.Instance.GetCurrentAudition();
-        m_gAssaultedActor.GetComponent<CastMember>().TakeDamage(m_fInsultDamage, m_eDamageType);
+        m_gAssaultedActor.GetComponent<CastMember>().TakeDamage(m_eDamageType);
         Vector2 newposition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1.0f);
         this.gameObject.transform.position = newposition;
+        InsultManager.Instance.UseInsult(this.gameObject);
         gameObject.SetActive(false);
     }
 

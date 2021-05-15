@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class CastMember : MonoBehaviour
 {
-    float m_fMaxConfidence = 10.0f;
+    [SerializeField]
+    float m_fMaxConfidence;
     float m_fCurrentConfidence;
 
     [SerializeField]
@@ -43,23 +44,29 @@ public class CastMember : MonoBehaviour
                 KillSelf();
             }
         }
+
+        if(m_NumofAttacks == 3)
+        {
+            //GameManager.Instance.NextAudition();
+        }
     }
 
-    public void TakeDamage(float damagevalue, InsultDamageType damagetype)
+    public void TakeDamage(InsultDamageType damagetype)
     {
         switch(damagetype)
         {
             case InsultDamageType.NO_EFFECT:
-                m_fCurrentConfidence -= damagevalue * 0.0f;
+                //nothing
+
                     break;
             case InsultDamageType.MILDLY_EFFECTIVE:
-                m_fCurrentConfidence -= damagevalue * 0.5f;
+                m_fCurrentConfidence -= 10.0f;
                 break;
             case InsultDamageType.EFFECTIVE:
-                m_fCurrentConfidence -= damagevalue;
+                m_fCurrentConfidence -= 20.0f;
                 break;
             case InsultDamageType.SUPER_EFFECTIVE:
-                m_fCurrentConfidence -= damagevalue * 2.0f;
+                m_fCurrentConfidence -= 50.0f;
                 break;
             default:
                 break;
@@ -71,7 +78,7 @@ public class CastMember : MonoBehaviour
 
     void KillSelf()
     {
-        GameManager.Instance.OnEliminate(this);
+        GameManager.Instance.OnEliminate(this.gameObject);
         //Removes itself from the gamemanagers list
     }
 }
