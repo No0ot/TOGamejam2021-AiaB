@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1032588498197138931}
   - component: {fileID: 7386492082338385322}
   m_Layer: 0
-  m_Name: Cast Member
+  m_Name: Monique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9716981, g: 0.5028468, b: 0.050418302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConfidenceMeter: {fileID: 930814635333607097}
   m_ActingEffectiveness: 02000000020000000100000001000000
-  m_CostumeEffectiveness: 00000000020000000300000002000000
-  m_InterestEffectiveness: 02000000010000000100000001000000
+  m_CostumeEffectiveness: 02000000030000000200000002000000
+  m_InterestEffectiveness: 02000000010000000000000001000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
 --- !u!1 &6139464665412095872
