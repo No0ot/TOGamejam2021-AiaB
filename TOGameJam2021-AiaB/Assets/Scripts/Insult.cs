@@ -54,4 +54,16 @@ public class Insult : MonoBehaviour
         m_gAssaultedActor.GetComponent<CastMember>().TakeDamage(m_fInsultDamage, m_eDamageType);
         Destroy(this.gameObject);
     }
+
+    private void OnMouseEnter()
+    {
+        Vector2 newposition = new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y + 1.0f);
+        this.gameObject.transform.position = newposition;
+    }
+
+    private void OnMouseExit()
+    {
+        Vector2 newposition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1.0f);
+        this.gameObject.transform.position = newposition;
+    }
 }
