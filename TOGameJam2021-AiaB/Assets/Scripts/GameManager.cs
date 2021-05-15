@@ -136,8 +136,10 @@ public class GameManager : MonoBehaviour
                 auditionsEliminatedByRound = new List<List<GameObject>>();
             auditionsEliminatedByRound.Add(new List<GameObject>());
             auditionsLeftInRound = survivingAuditionsList;
+            survivingAuditionsList.Clear();
         }
 
+        //InsultManager.Instance.OnNewRound();
         NextAudition();
     }
 
@@ -161,13 +163,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Callbacks
-    public void OnEliminate(CastMember castMember)
+    public void OnSurvive(GameObject castMember)
     {
-        GameObject eliminatee = castMember.gameObject;
-        eliminatee.SetActive(false);
-        int i = survivingAuditionsList.FindIndex(c => c == eliminatee);
-        survivingAuditionsList.RemoveAt(i);
-
-        auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(eliminatee);
+        castMember.SetActive(false);
+        survivingAuditionsList.Add(castMember);
+    }
+    public void OnEliminate(GameObject castMember)
+    {
+        castMember.SetActive(false);
+        auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
     }
 }
