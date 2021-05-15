@@ -59,9 +59,11 @@ public class GameManager : MonoBehaviour
     private void SelectAuditions()
     {
         numAuditions = Mathf.Min(numAuditions, fullAuditionsList.Count);
-        List<GameObject> availableAuditionsList = fullAuditionsList;
-        selectedAuditionsList = new List<GameObject>();
+        List<GameObject> availableAuditionsList = new List<GameObject>();
+        foreach (GameObject audition in fullAuditionsList)
+            availableAuditionsList.Add(audition);
         
+        selectedAuditionsList = new List<GameObject>();
         for (int i = 0; i < numAuditions; i++)
         {
             int r = Random.Range(0, availableAuditionsList.Count);
@@ -132,10 +134,18 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            // Ensure that the relevant lists are instantiated.
             if (auditionsEliminatedByRound == null)
                 auditionsEliminatedByRound = new List<List<GameObject>>();
+            if (auditionsLeftInRound == null)
+                auditionsLeftInRound = new List<GameObject>();
+
+            // Add the new eliminations list for the new round
             auditionsEliminatedByRound.Add(new List<GameObject>());
-            auditionsLeftInRound = survivingAuditionsList;
+
+            // Shallow copy the survivors list to the new round's auditions list
+            foreach (GameObject audition in survivingAuditionsList)
+                auditionsLeftInRound.Add(audition);
             survivingAuditionsList.Clear();
         }
 
@@ -170,6 +180,12 @@ public class GameManager : MonoBehaviour
     }
     public void OnEliminate(GameObject castMember)
     {
+        castMember.SetActive(false);
+        auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
+    }
+    public void OnEliminate(CastMember castMemberc)
+    {
+        GameObject castMember = castMemberc.gameObject;
         castMember.SetActive(false);
         auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
     }
