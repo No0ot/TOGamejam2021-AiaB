@@ -26,6 +26,20 @@ public class Insult : MonoBehaviour
         {
             m_eDamageType = (InsultDamageType)Random.Range(1, 4);
         }
+        switch(m_eDamageType)
+        {
+            case InsultDamageType.GREEN:
+                GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+            case InsultDamageType.RED:
+                GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+            case InsultDamageType.YELLOW:
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+            default:
+                break;
+        }
     }
 
     // Update is called once per frame

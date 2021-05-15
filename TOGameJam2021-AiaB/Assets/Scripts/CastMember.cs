@@ -25,6 +25,20 @@ public class CastMember : MonoBehaviour
         {
             m_eArmor = (InsultArmorType)Random.Range(1, 3);
         }
+        switch (m_eArmor)
+        {
+            case InsultArmorType.GREEN:
+                GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+            case InsultArmorType.RED:
+                GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+            case InsultArmorType.YELLOW:
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+            default:
+                break;
+        }
     }
 
     // Update is called once per frame

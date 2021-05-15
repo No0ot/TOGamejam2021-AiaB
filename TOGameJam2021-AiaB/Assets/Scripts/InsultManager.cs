@@ -10,8 +10,11 @@ public class InsultManager : MonoBehaviour
     public GameObject InsultPrefab;
     public int InsultAmount = 20;
 
-    public List<GameObject> m_InsultList;
+     List<GameObject> m_InsultList;
     public List<GameObject> m_CurrentHand;
+
+    [SerializeField]
+    Vector2[] CardPosition;
     // Start is called before the first frame update
 
     private void Awake()
@@ -24,21 +27,32 @@ public class InsultManager : MonoBehaviour
         {
             GameObject newInsult = Instantiate(InsultPrefab);
 
+            newInsult.SetActive(false);
             m_InsultList.Add(newInsult);
         }
+    }
+    private void Start()
+    {
+        PickupInsults();
+        DisplayHand();
     }
 
     public void PickupInsults()
     {
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 5; i++)
         {
             int r = Random.Range(0, m_InsultList.Count);
             m_CurrentHand.Add(m_InsultList[r]);
             m_InsultList.RemoveAt(r);
         }
     }
+
     public void DisplayHand()
     {
-
+        for(int i = 0; i < 5; i++)
+        {
+            m_CurrentHand[i].SetActive(true);
+            m_CurrentHand[i].transform.position = CardPosition[i];
+        }
     }
 }
