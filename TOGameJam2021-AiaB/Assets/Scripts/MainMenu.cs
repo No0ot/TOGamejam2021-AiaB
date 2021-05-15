@@ -54,6 +54,8 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.SetInt("NumberOfRounds", NumberOfRounds);
+        PlayerPrefs.SetInt("NumberOfAuditioners", NumberOfEnemies);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     

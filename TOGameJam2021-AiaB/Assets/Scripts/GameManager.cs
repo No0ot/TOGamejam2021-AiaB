@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //Import the number of rounds and auditions from the settings set by user in main menu
+        numRounds = PlayerPrefs.GetInt("NumberOfRounds") ;
+        numAuditions = PlayerPrefs.GetInt("NumberOfAuditioners");
         if (fullAuditionsList.Count < 1)
             Debug.LogError("Full Auditions List is not yet populated!");
         if (numAuditions < 1)
