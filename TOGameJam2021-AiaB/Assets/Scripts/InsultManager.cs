@@ -8,13 +8,15 @@ public class InsultManager : MonoBehaviour
     public static InsultManager Instance { get { return instance; } }
 
     public GameObject InsultPrefab;
-    public int InsultAmount = 20;
+    public int InsultAmount = 10;
 
      List<GameObject> m_InsultList;
     public List<GameObject> m_CurrentHand;
 
     [SerializeField]
     Vector2[] CardPosition;
+    [SerializeField]
+    string[] MeanWords;
     // Start is called before the first frame update
 
     private void Awake()
@@ -27,6 +29,7 @@ public class InsultManager : MonoBehaviour
         {
             GameObject newInsult = Instantiate(InsultPrefab);
 
+            newInsult.GetComponent<Insult>().m_tInsultText.text = MeanWords[i];
             newInsult.SetActive(false);
             m_InsultList.Add(newInsult);
         }

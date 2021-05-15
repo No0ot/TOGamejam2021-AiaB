@@ -179,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.4339623, g: 0.030704875, b: 0.030704875, a: 1}
   m_FlipX: 0
@@ -344,7 +344,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.4433962, g: 0.2277724, b: 0.11084905, a: 1}
   m_FlipX: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsultPrefab: {fileID: 6833277276708349506, guid: 7c9eb782d15ba8a4080d8ce36dbbcb8a, type: 3}
-  InsultAmount: 20
+  InsultAmount: 10
   m_CurrentHand: []
   CardPosition:
   - {x: -7, y: -5}
@@ -456,6 +456,17 @@ MonoBehaviour:
   - {x: 0, y: -5}
   - {x: 3.5, y: -5}
   - {x: 7, y: -5}
+  MeanWords:
+  - YOu suck
+  - get a REAL job
+  - My cat sings better than you
+  - i sincerly hope you break a leg
+  - No one will hire you
+  - Id rather a monkey auditioned
+  - you...REALLY suck
+  - '*blows raspberry*'
+  - '*snore*'
+  - Id rather die then watch you again
 --- !u!4 &1944311191
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum InsultDamageType
 {
@@ -16,6 +17,8 @@ public class Insult : MonoBehaviour
     float m_fInsultDamage = 5.0f;
     [SerializeField]
     InsultDamageType m_eDamageType = 0;
+    [SerializeField]
+    public TMP_Text m_tInsultText;
 
     GameObject m_gAssaultedActor = null;
 
