@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     private List<GameObject> auditionsLeftInRound;
     private List<List<GameObject>> auditionsEliminatedByRound;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         if (fullAuditionsList.Count < 1)

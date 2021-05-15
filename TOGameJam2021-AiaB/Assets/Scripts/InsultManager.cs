@@ -11,6 +11,7 @@ public class InsultManager : MonoBehaviour
     public int InsultAmount = 20;
 
     public List<GameObject> m_InsultList;
+    public List<GameObject> m_CurrentHand;
     // Start is called before the first frame update
 
     private void Awake()
@@ -27,5 +28,17 @@ public class InsultManager : MonoBehaviour
         }
     }
 
+    public void PickupInsults()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            int r = Random.Range(0, m_InsultList.Count);
+            m_CurrentHand.Add(m_InsultList[r]);
+            m_InsultList.RemoveAt(r);
+        }
+    }
+    public void DisplayHand()
+    {
 
+    }
 }

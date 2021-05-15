@@ -16,8 +16,8 @@ public class Insult : MonoBehaviour
     float m_fInsultDamage = 5.0f;
     [SerializeField]
     InsultDamageType m_eDamageType = 0;
-    [SerializeField]
-    GameObject m_gAssaultedActor;
+
+    GameObject m_gAssaultedActor = null;
 
     // Start is called before the first frame update
     void Start()
