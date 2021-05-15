@@ -95,7 +95,10 @@ public class GameManager : MonoBehaviour
 
         // Check if the round is now over
         if(auditionsLeftInRound.Count < 1)
+        {
             ShowRecapScene();
+            return;
+        }
 
         // Pick the next audition
         if (randomizeAuditionOrder)
@@ -182,11 +185,13 @@ public class GameManager : MonoBehaviour
     {
         castMember.SetActive(false);
         auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
+        NextAudition();
     }
     public void OnEliminate(CastMember castMemberc)
     {
         GameObject castMember = castMemberc.gameObject;
         castMember.SetActive(false);
         auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
+        NextAudition();
     }
 }
