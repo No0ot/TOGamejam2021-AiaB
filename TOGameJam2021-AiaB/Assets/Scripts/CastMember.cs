@@ -21,10 +21,14 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     string m_CharacterDescription;
 
+    string m_CharacterName;
+
+    int m_NumofAttacks;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        m_CharacterName = gameObject.name;
         m_fCurrentConfidence = m_fMaxConfidence;
     }
 
@@ -62,6 +66,7 @@ public class CastMember : MonoBehaviour
         }
         Vector3 ConfidencePercentage = new Vector3(m_fCurrentConfidence / m_fMaxConfidence, 1.0f,1.0f);
         ConfidenceMeter.transform.localScale = ConfidencePercentage;
+        m_NumofAttacks++;
     }
 
     void KillSelf()

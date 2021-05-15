@@ -2246,7 +2246,11 @@ MonoBehaviour:
   randomizeAuditionOrder: 0
   fullAuditionsList:
   - {fileID: 1032588498197138930, guid: 77b9474aece254f43bf3be0c40c6a785, type: 3}
-  numAuditions: 1
+  - {fileID: 1032588498197138930, guid: 81d7eef69966c28429e338bd5f4c414d, type: 3}
+  - {fileID: 1032588498197138930, guid: 0ab4d48247ff50c4bbd299e211e03c3f, type: 3}
+  - {fileID: 1032588498197138930, guid: df3507b3faa427f4e8751fc6cb47423b, type: 3}
+  - {fileID: 1032588498197138930, guid: ed8e7c01ef405ac499de0285650c2cdc, type: 3}
+  numAuditions: 5
   numRounds: 1
 --- !u!4 &1872339686
 Transform:
