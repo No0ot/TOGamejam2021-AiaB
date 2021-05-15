@@ -8,6 +8,7 @@ public class CharacterProfile : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Text ProfileDescription;
     [SerializeField] Image Headshot;
+    [SerializeField] Text ProfileName;
 
     public void ChangeHeadshot(Image newImage)
     {
@@ -17,6 +18,11 @@ public class CharacterProfile : MonoBehaviour
     public void ChangeDescription(string newDescription)
     {
         ProfileDescription.text = newDescription;
+    }
+
+    public void ChangeName( string newName)
+    {
+        ProfileName.text = newName;
     }
 
     void Start()
