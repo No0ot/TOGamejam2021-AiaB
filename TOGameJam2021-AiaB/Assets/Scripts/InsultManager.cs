@@ -29,13 +29,17 @@ public class InsultManager : MonoBehaviour
 
     public void DisplayActingInsults()
     {
+
+        int[] tempeffectiveness = GameManager.Instance.GetCurrentAudition().GetComponent<CastMember>().m_ActingEffectiveness;
         m_InsultCards[0].GetComponent<Insult>().setText(" Insult Voice");
-        m_InsultCards[1].GetComponent<Insult>().setText(" Insult Body Language");
-        m_InsultCards[2].GetComponent<Insult>().setText(" Insult Enunciation");
-        m_InsultCards[3].GetComponent<Insult>().setText(" Insult Emotion");
-        foreach (GameObject insult in m_InsultCards )
+        m_InsultCards[1].GetComponent<Insult>().setText(" Insult Showmanship");
+        m_InsultCards[2].GetComponent<Insult>().setText(" Insult Accuracy");
+        m_InsultCards[3].GetComponent<Insult>().setText(" Insult Experience");
+
+        for(int i = 0; i < 4; i++ )
         {
-            insult.SetActive(true);
+            m_InsultCards[i].GetComponent<Insult>().setDamageType(tempeffectiveness[i]);
+            m_InsultCards[i].SetActive(true);
         }
 
         m_UICanvas.SetActive(false);
@@ -44,43 +48,35 @@ public class InsultManager : MonoBehaviour
 
     public void DisplayCostumeInsults()
     {
+        int[] tempeffectiveness = GameManager.Instance.GetCurrentAudition().GetComponent<CastMember>().m_CostumeEffectiveness;
         m_InsultCards[0].GetComponent<Insult>().setText(" Insult hat");
         m_InsultCards[1].GetComponent<Insult>().setText(" Insult shoes");
         m_InsultCards[2].GetComponent<Insult>().setText(" Insult hair");
         m_InsultCards[3].GetComponent<Insult>().setText(" Insult shirt");
-        foreach (GameObject insult in m_InsultCards)
+
+        for (int i = 0; i < 4; i++)
         {
-            insult.SetActive(true);
+            m_InsultCards[i].GetComponent<Insult>().setDamageType(tempeffectiveness[i]);
+            m_InsultCards[i].SetActive(true);
         }
+
         m_UICanvas.SetActive(false);
         m_BackButton.SetActive(true);
     }
     public void DisplayInterestsInsults()
     {
-        // this one might have to read from the current audition
+        int[] tempeffectiveness = GameManager.Instance.GetCurrentAudition().GetComponent<CastMember>().m_InterestEffectiveness;
+        m_InsultCards[0].GetComponent<Insult>().setText(" Insult Hobby");
+        m_InsultCards[1].GetComponent<Insult>().setText(" Insult Theatre genre");
+        m_InsultCards[2].GetComponent<Insult>().setText(" Insult Favorite food");
+        m_InsultCards[3].GetComponent<Insult>().setText(" Insult favorite subject");
 
-        m_InsultCards[0].GetComponent<Insult>().setText(" Insult 1");
-        m_InsultCards[1].GetComponent<Insult>().setText(" Insult 2");
-        m_InsultCards[2].GetComponent<Insult>().setText(" Insult 3");
-        m_InsultCards[3].GetComponent<Insult>().setText(" Insult 4");
-        foreach (GameObject insult in m_InsultCards)
+        for (int i = 0; i < 4; i++)
         {
-            insult.SetActive(true);
+            m_InsultCards[i].GetComponent<Insult>().setDamageType(tempeffectiveness[i]);
+            m_InsultCards[i].SetActive(true);
         }
-        m_UICanvas.SetActive(false);
-        m_BackButton.SetActive(true);
-    }
 
-    public void DisplayExperienceInsults()
-    {
-        m_InsultCards[0].GetComponent<Insult>().setText(" Not Enough Musicals");
-        m_InsultCards[1].GetComponent<Insult>().setText(" Not enough interpretive dance");
-        m_InsultCards[2].GetComponent<Insult>().setText(" Not enough Shakespeare");
-        m_InsultCards[3].GetComponent<Insult>().setText(" Not enough Improv");
-        foreach (GameObject insult in m_InsultCards)
-        {
-            insult.SetActive(true);
-        }
         m_UICanvas.SetActive(false);
         m_BackButton.SetActive(true);
     }

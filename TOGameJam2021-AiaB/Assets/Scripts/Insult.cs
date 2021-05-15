@@ -5,10 +5,10 @@ using TMPro;
 
 public enum InsultDamageType
 {
-    NONE,
-    RED,
-    YELLOW,
-    GREEN,
+    NO_EFFECT,
+    MILDLY_EFFECTIVE,
+    EFFECTIVE,
+    SUPER_EFFECTIVE,
     NUM_DAMAGE_TYPES
 }
 
@@ -19,6 +19,8 @@ public class Insult : MonoBehaviour
     InsultDamageType m_eDamageType = 0;
     [SerializeField]
     public TMP_Text m_tInsultText;
+
+    int m_CardNumber;
 
     GameObject m_gAssaultedActor = null;
 
@@ -38,14 +40,17 @@ public class Insult : MonoBehaviour
     {
         switch (m_eDamageType)
         {
-            case InsultDamageType.GREEN:
-                GetComponent<SpriteRenderer>().color = Color.green;
+            case InsultDamageType.NO_EFFECT:
+                GetComponent<SpriteRenderer>().color = Color.grey;
                 break;
-            case InsultDamageType.RED:
+            case InsultDamageType.MILDLY_EFFECTIVE:
                 GetComponent<SpriteRenderer>().color = Color.red;
                 break;
-            case InsultDamageType.YELLOW:
+            case InsultDamageType.EFFECTIVE:
                 GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+            case InsultDamageType.SUPER_EFFECTIVE:
+                GetComponent<SpriteRenderer>().color = Color.green;
                 break;
             default:
                 break;
@@ -76,5 +81,10 @@ public class Insult : MonoBehaviour
     public void setText(string newtext)
     {
         m_tInsultText.SetText(newtext);
+    }
+
+    public void setDamageType(int newDamageType)
+    {
+        m_eDamageType = (InsultDamageType)newDamageType;
     }
 }

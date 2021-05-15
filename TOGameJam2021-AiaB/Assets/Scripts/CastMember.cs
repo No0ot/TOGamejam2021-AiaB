@@ -20,6 +20,12 @@ public class CastMember : MonoBehaviour
     InsultArmorType m_eArmor;
     [SerializeField]
     GameObject ConfidenceMeter;
+    [SerializeField]
+    public int[] m_ActingEffectiveness;
+    [SerializeField]
+    public int[] m_CostumeEffectiveness;
+    [SerializeField]
+    public int[] m_InterestEffectiveness;
 
     // Start is called before the first frame update
     void Start()
@@ -63,58 +69,17 @@ public class CastMember : MonoBehaviour
     {
         switch(damagetype)
         {
-            case InsultDamageType.RED:
-                if(m_eArmor == InsultArmorType.RED)
-                {
-
-                    m_fCurrentConfidence -= damagevalue;
-                    Debug.Log("RED ON RED");
-
-                } else if(m_eArmor == InsultArmorType.YELLOW)
-                {
-                    m_fCurrentConfidence -= (damagevalue * 0.5f);
-                    Debug.Log("RED ON YELLOW");
-
-                } else if (m_eArmor == InsultArmorType.GREEN)
-                {
-                    m_fCurrentConfidence -= (damagevalue * 2.0f);
-                    Debug.Log("RED ON GREEN");
-
-                }
+            case InsultDamageType.NO_EFFECT:
+                m_fCurrentConfidence -= damagevalue * 0.0f;
                     break;
-            case InsultDamageType.YELLOW:
-                if (m_eArmor == InsultArmorType.RED)
-                {
-                    m_fCurrentConfidence -= (damagevalue * 2.0f);
-                    Debug.Log("YELLOW ON RED");
-                }
-                else if (m_eArmor == InsultArmorType.YELLOW)
-                {
-                    m_fCurrentConfidence -= damagevalue;
-                    Debug.Log("YELLOW ON YELLOW");
-                }
-                else if (m_eArmor == InsultArmorType.GREEN)
-                {
-                    m_fCurrentConfidence -= (damagevalue * 0.5f);
-                    Debug.Log("YELLOW ON GREEN");
-                }
+            case InsultDamageType.MILDLY_EFFECTIVE:
+                m_fCurrentConfidence -= damagevalue * 0.5f;
                 break;
-            case InsultDamageType.GREEN:
-                if (m_eArmor == InsultArmorType.RED)
-                {
-                    m_fCurrentConfidence -= (damagevalue * 0.5f);
-                    Debug.Log("GREEN ON RED");
-                }
-                else if (m_eArmor == InsultArmorType.YELLOW)
-                {
-                    m_fCurrentConfidence -= (damagevalue * 2.0f);
-                    Debug.Log("GREEN ON YELLOW");
-                }
-                else if (m_eArmor == InsultArmorType.GREEN)
-                {
-                    m_fCurrentConfidence -= damagevalue;
-                    Debug.Log("GREEN ON GREEN");
-                }
+            case InsultDamageType.EFFECTIVE:
+                m_fCurrentConfidence -= damagevalue;
+                break;
+            case InsultDamageType.SUPER_EFFECTIVE:
+                m_fCurrentConfidence -= damagevalue * 2.0f;
                 break;
             default:
                 break;
