@@ -2252,6 +2252,10 @@ MonoBehaviour:
   - {fileID: 1032588498197138930, guid: ed8e7c01ef405ac499de0285650c2cdc, type: 3}
   numAuditions: 5
   numRounds: 1
+  fadeOutTime: 2
+  fadeInTime: 2
+  auditionInterval: 1
+  canInsultWhileStillArriving: 0
 --- !u!4 &1872339686
 Transform:
   m_ObjectHideFlags: 0
@@ -2296,6 +2300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsultPrefab: {fileID: 6833277276708349506, guid: 7c9eb782d15ba8a4080d8ce36dbbcb8a, type: 3}
+  m_OverallUICanvas: {fileID: 7751762}
   m_UICanvas: {fileID: 1138021094}
   m_InsultCards:
   - {fileID: 1254124039}
@@ -2303,6 +2308,9 @@ MonoBehaviour:
   - {fileID: 1988119725}
   - {fileID: 1323986908}
   m_BackButton: {fileID: 279703164}
+  m_ActingInsultUsed: 00000000
+  m_CostumeInsultUsed: 00000000
+  m_InterestInsultUsed: 00000000
 --- !u!4 &1944311191
 Transform:
   m_ObjectHideFlags: 0
