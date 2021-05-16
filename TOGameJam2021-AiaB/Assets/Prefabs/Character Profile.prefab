@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 1360278517504451868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009032723, y: 0.0040861242, z: 1}
+  m_LocalScale: {x: 1.4518002, y: 1.4518001, z: 1.4518001}
   m_Children: []
-  m_Father: {fileID: 8506111116969056807}
+  m_Father: {fileID: 6116486230987169162}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.008009911, y: -0.296}
-  m_SizeDelta: {x: 100, y: 107.9423}
+  m_AnchoredPosition: {x: -10.955, y: -284}
+  m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3156726384643472331
 CanvasRenderer:
@@ -67,18 +67,25 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 15
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PlaceHolder Profile description
+  m_Text: 'Experience: None
+
+    Temperament: Laid Back
+
+    Interests: French Fries,
+    Skateboarding, favorite hat
+
+'
 --- !u!1 &6154042476960208970
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,14 +111,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6154042476960208970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.667114, y: -81.304794, z: 0}
-  m_LocalScale: {x: 110.7086, y: 244.73068, z: 1}
-  m_Children:
-  - {fileID: 470995709945324507}
-  - {fileID: 1280018896291931358}
-  - {fileID: 8763967578386798614}
+  m_LocalPosition: {x: -9.667114, y: -118, z: 0}
+  m_LocalScale: {x: 395.80573, y: 590.9305, z: 1.4518001}
+  m_Children: []
   m_Father: {fileID: 6116486230987169162}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3717620074497445746
 SpriteRenderer:
@@ -241,6 +245,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 470995709945324507}
+  - {fileID: 1280018896291931358}
+  - {fileID: 8763967578386798614}
   - {fileID: 8506111116969056807}
   m_Father: {fileID: 5277193976752198688}
   m_RootOrder: 0
@@ -338,15 +345,15 @@ RectTransform:
   m_GameObject: {fileID: 8983503023410191916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009032723, y: 0.0040861242, z: 1}
+  m_LocalScale: {x: 1.4518002, y: 1.4518001, z: 1.4518001}
   m_Children: []
-  m_Father: {fileID: 8506111116969056807}
+  m_Father: {fileID: 6116486230987169162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.008009911, y: 0.256}
-  m_SizeDelta: {x: 100, y: 107.9423}
+  m_AnchoredPosition: {x: -10.955, y: 125.65}
+  m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7821884577455242071
 CanvasRenderer:
@@ -378,12 +385,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 15
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -419,14 +426,14 @@ RectTransform:
   m_GameObject: {fileID: 9173034109006236029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009032723, y: 0.0040861242, z: 1}
+  m_LocalScale: {x: 2.4330835, y: 2.4330833, z: 2.4330833}
   m_Children: []
-  m_Father: {fileID: 8506111116969056807}
+  m_Father: {fileID: 6116486230987169162}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.008010864, y: 0.19729996}
+  m_AnchoredPosition: {x: -10.955, y: -35.146}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1535946467154683098
@@ -458,7 +465,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

@@ -186,8 +186,8 @@ MonoBehaviour:
   m_CostumeEffectiveness: 02000000010000000000000002000000
   m_InterestEffectiveness: 03000000010000000100000000000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: blah blah blah
-  m_CharacterBio: 
+  m_CharacterDescription: 'Experience: helps behind the scenes Temperament: chill
+    vibes Interests: hacky sack, hippie culture, lava lamps '
   m_CharacterName: Trent
   m_SpeechBubble: {fileID: 6018713458461307333}
   m_SpeechText: {fileID: 680537576272134980}

@@ -24,9 +24,6 @@ public class CastMember : MonoBehaviour
     public Sprite m_Headshot;
     [SerializeField]
     public string m_CharacterDescription;
-    [SerializeField]
-    public string m_CharacterBio;
-    [SerializeField]
     public string m_CharacterName;
 
     private int m_attacksTakenInRound;
@@ -58,7 +55,7 @@ public class CastMember : MonoBehaviour
         m_sr = GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
-        
+
         SpriteRenderer[] srs = { m_sr, m_cmsr, m_cmbgsr };
         foreach (SpriteRenderer sr in srs)
         {
@@ -66,7 +63,7 @@ public class CastMember : MonoBehaviour
             c.a = 0.0f;
             sr.color = c;
         }
-        
+
         elapsedTime = 0.0f;
 
         m_SpeechText.text = m_PerformanceText;

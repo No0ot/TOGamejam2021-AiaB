@@ -186,9 +186,10 @@ MonoBehaviour:
   m_CostumeEffectiveness: 02000000010000000100000000000000
   m_InterestEffectiveness: 02000000010000000000000002000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: blah blah blah
-  m_CharacterBio: 
-  m_CharacterName: Minnie
+  m_CharacterDescription: 'Experience: Participated in the Band every year Temperament:
+    Musical Interests: Singing, Trumpet, performance '
+  m_CharacterName: 'Experience: Participated in the Band every year Temperament:
+    Musical Interests: Singing, Trumpet, performance '
   m_SpeechBubble: {fileID: 8952480022751926511}
   m_SpeechText: {fileID: 462125066181646488}
   m_PerformanceText: If music be the food of love, play on.
