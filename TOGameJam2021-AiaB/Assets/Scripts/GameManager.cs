@@ -251,14 +251,6 @@ public class GameManager : MonoBehaviour
             CastMember cm = audition.GetComponent<CastMember>();
             if (cm)
             {
-                SpriteRenderer sr = cm.GetSprite();
-                sr.material = defaultMaterial;
-                Color c = sr.color;
-                c.r = 1.0f;
-                c.g = 1.0f;
-                c.b = 1.0f;
-                sr.color = c;
-
                 if (audition.activeInHierarchy)
                 {
                     cm.OnFadeOut(Mathf.Min(1.0f, auditionInterval));
@@ -294,6 +286,18 @@ public class GameManager : MonoBehaviour
         // Set any relevant visuals
         characterProfile.SetActive(true);
         currentAudition.transform.position = Vector2.zero;
+
+        CastMember cm = currentAudition.GetComponent<CastMember>();
+        if (cm)
+        {
+            SpriteRenderer sr = cm.GetSprite();
+            sr.material = defaultMaterial;
+            Color c = sr.color;
+            c.r = 1.0f;
+            c.g = 1.0f;
+            c.b = 1.0f;
+            sr.color = c;
+        }
     }
 
     // This function is to proceed to the next round. It will create a new list of auditions for the start of the round
