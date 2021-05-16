@@ -5,27 +5,59 @@ using UnityEngine;
 public class CharacterEffect : MonoBehaviour
 {
     [SerializeField]
-    private float FadeInDuration;
+    Sprite[] sprites;
     [SerializeField]
-    private float FullyVisibleDuration;
+    private float spriteSwitchFrequency;
+    private float switchTime;
+    private int currentSprite;
     [SerializeField]
-    private float FadeOutDuration;
-    private float ElapsedTime;
+    private float fadeInDuration;
+    [SerializeField]
+    private float fullyVisibleDuration;
+    [SerializeField]
+    private float fadeOutDuration;
+    private float elapsedTime;
     private SpriteRenderer m_sr;
+
+    private void OnValidate()
+    {
+        if (sprites.Length > 0)
+        {
+            currentSprite = sprites.Length > 1 ? currentSprite % sprites.Length : 0;
+            m_sr = GetComponent<SpriteRenderer>();
+            m_sr.sprite = sprites[currentSprite];
+        }
+    }
 
     private void Start()
     {
-        ElapsedTime = 0.0f;
+        elapsedTime = 0.0f;
+        switchTime = 0.0f;
+        currentSprite = 0;
         m_sr = GetComponent<SpriteRenderer>();
+        if (sprites.Length > 0)
+            m_sr.sprite = sprites[currentSprite];
     }
 
     void Update()
     {
-        float totalTime = FadeInDuration + FullyVisibleDuration + FadeOutDuration;
-        if (ElapsedTime < totalTime)
+        switchTime += Time.deltaTime;
+        if (switchTime > spriteSwitchFrequency)
         {
-            ElapsedTime += Time.deltaTime;
-            if (ElapsedTime >= totalTime)
+            switchTime -= spriteSwitchFrequency;
+            currentSprite++;
+            if (sprites.Length > 0)
+            {
+                currentSprite = sprites.Length > 1 ? currentSprite % sprites.Length : 0;
+                m_sr.sprite = sprites[currentSprite];
+            }
+        }
+
+        float totalTime = fadeInDuration + fullyVisibleDuration + fadeOutDuration;
+        if (elapsedTime < totalTime)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= totalTime)
                 gameObject.SetActive(false);
         }
 
@@ -35,25 +67,25 @@ public class CharacterEffect : MonoBehaviour
     public void OnDisplay()
     {
         gameObject.SetActive(true);
-        ElapsedTime = 0.0f;
+        elapsedTime = 0.0f;
     }
 
     private void CalcOpacity()
     {
         Color c = m_sr.color;
         
-        if (ElapsedTime < FadeInDuration)
+        if (elapsedTime < fadeInDuration)
         {
-            c.a = ElapsedTime / FadeInDuration;
+            c.a = elapsedTime / fadeInDuration;
         }
-        else if (ElapsedTime < FadeInDuration + FullyVisibleDuration)
+        else if (elapsedTime < fadeInDuration + fullyVisibleDuration)
         {
             c.a = 1.0f;
         }
-        else if (ElapsedTime < FadeInDuration + FullyVisibleDuration + FadeOutDuration)
+        else if (elapsedTime < fadeInDuration + fullyVisibleDuration + fadeOutDuration)
         {
-            float t = (FadeInDuration + FullyVisibleDuration + FadeOutDuration) - ElapsedTime;
-            c.a = t / FadeOutDuration;
+            float t = (fadeInDuration + fullyVisibleDuration + fadeOutDuration) - elapsedTime;
+            c.a = t / fadeOutDuration;
         }
         else
         {

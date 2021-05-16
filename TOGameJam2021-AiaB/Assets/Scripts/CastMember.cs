@@ -60,6 +60,8 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     CharacterEffect SweatDrop;
     [SerializeField]
+    CharacterEffect Sparkles;
+    [SerializeField]
     CharacterEffect AngerLines;
 
 
@@ -105,6 +107,13 @@ public class CastMember : MonoBehaviour
         m_fCurrentConfidence = m_fMaxConfidence;
         m_SpeechText.color = new Color(0, 0, 0, 1);
         m_StatsText.text = "";
+
+        CharacterEffect[] characterEffects = { SweatDrop, Sparkles, AngerLines };
+        foreach (CharacterEffect ce in characterEffects)
+        {
+            if (ce != null)
+                ce.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -117,8 +126,12 @@ public class CastMember : MonoBehaviour
             if (elapsedTime > fadeTime + speechTime)
             {
                 SpriteReference.sprite = PerformancePose;
+                
+                // For the character effects, right now it will only display whichever one is set in the inspector. If there is a variable for the quality of the performance, this could be a switch case based on that.
                 if (SweatDrop != null)
                     SweatDrop.OnDisplay();
+                if (Sparkles != null)
+                    Sparkles.OnDisplay();
 
                 if (!fadingIn)
                     gameObject.SetActive(false);
@@ -273,6 +286,13 @@ public class CastMember : MonoBehaviour
 
         m_SpeechBubble.SetActive(false);
         m_SpeechText.gameObject.SetActive(false);
+
+        CharacterEffect[] characterEffects = { SweatDrop, Sparkles, AngerLines };
+        foreach (CharacterEffect ce in characterEffects)
+        {
+            if (ce != null)
+                ce.gameObject.SetActive(false);
+        }    
     }
 
     public void OnFinalSpeech(float finalSpeechTime)
