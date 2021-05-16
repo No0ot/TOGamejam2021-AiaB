@@ -66,6 +66,9 @@ public class InsultManager : MonoBehaviour
     [SerializeField]
     private float TimePerInsult;
     private float TimeRemaining;
+    [SerializeField]
+    private float TimeForResponse;
+    private float TimeRemainingForResponse;
     private bool CountingDown;
     [SerializeField]
     TMP_Text TimeText;
@@ -87,7 +90,16 @@ public class InsultManager : MonoBehaviour
 
     private void Update()
     {
-        if (CountingDown)
+        if (TimeRemainingForResponse > 0.0f)
+        {
+            TimeRemainingForResponse -= Time.deltaTime;
+            if (TimeRemainingForResponse <= 0.0f)
+            {
+                GameManager.Instance.GetCurrentAudition().GetComponent<CastMember>().OnRelax();
+                TimeRemaining = TimePerInsult;
+            }
+        }
+        else if (CountingDown)
             TimeRemaining -= Time.deltaTime;
 
         if (TimeRemaining <= 0.0f)
@@ -101,7 +113,13 @@ public class InsultManager : MonoBehaviour
             TimeRemaining = TimePerInsult;
         }
 
-        TimeText.text = ((int)TimeRemaining).ToString();
+        TimeText.text = ((int)(TimeRemaining)).ToString();
+
+    }
+
+    public void OnInsultGiven()
+    {
+        TimeRemainingForResponse = TimeForResponse;
     }
 
     public void OnStartCoundown()

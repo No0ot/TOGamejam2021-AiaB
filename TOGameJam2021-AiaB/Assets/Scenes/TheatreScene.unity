@@ -3884,7 +3884,8 @@ MonoBehaviour:
     your sake."
   InsultText: {fileID: 1737441899}
   InsultSpeechBubble: {fileID: 635314545}
-  TimePerInsult: 1
+  TimePerInsult: 10.99
+  TimeForResponse: 2
   TimeText: {fileID: 777752988}
 --- !u!4 &1944311191
 Transform:

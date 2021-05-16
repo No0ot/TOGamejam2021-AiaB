@@ -193,6 +193,8 @@ public class GameManager : MonoBehaviour
         foreach (GameObject audition in selectedAuditionsList)
         {
             CastMember cm = audition.GetComponent<CastMember>();
+            cm.OnRelax();
+
             if (cm.GetEliminatedInRound() == currentRound) // Actor was eliminated this round
                 cmlist.Add(cm);
             else if (cm.GetEliminatedInRound() == 0) // Actor is still in the game

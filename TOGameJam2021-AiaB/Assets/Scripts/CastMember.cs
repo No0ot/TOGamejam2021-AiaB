@@ -214,6 +214,13 @@ public class CastMember : MonoBehaviour
             m_attacksTakenInTotal++;
         }
         SpriteReference.sprite = AngryPose;
+
+        InsultManager.Instance.OnInsultGiven();
+    }
+
+    public void OnRelax()
+    {
+        SpriteReference.sprite = BasePose;
     }
 
     void KillSelf()
