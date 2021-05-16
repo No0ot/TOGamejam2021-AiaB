@@ -31,7 +31,8 @@ public class CastMember : MonoBehaviour
     private float m_timeTakenInRound;
     private float m_timeTakenInTotal;
     private int m_eliminatedInRound;
-
+    [SerializeField]
+    public string m_performanceSoundName;
     [SerializeField]
     GameObject m_SpeechBubble;
     [SerializeField]
@@ -117,6 +118,7 @@ public class CastMember : MonoBehaviour
                 {
                     m_SpeechBubble.SetActive(true);
                     m_SpeechText.gameObject.SetActive(true);
+                    FindObjectOfType<AudioManager>().PlaySoundByName(m_performanceSoundName);
                 }
                 else
                 {

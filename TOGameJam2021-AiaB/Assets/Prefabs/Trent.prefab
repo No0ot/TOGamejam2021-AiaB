@@ -191,6 +191,7 @@ MonoBehaviour:
   m_CharacterDescription: 'Experience: helps behind the scenes Temperament: chill
     vibes Interests: hacky sack, hippie culture, lava lamps '
   m_CharacterName: Trent
+  m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 6018713458461307333}
   m_SpeechText: {fileID: 680537576272134980}
   m_StatsText: {fileID: 8763226134357645823}

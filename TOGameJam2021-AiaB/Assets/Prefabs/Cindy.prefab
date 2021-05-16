@@ -140,6 +140,7 @@ MonoBehaviour:
   m_CharacterDescription: 'Experience: Participated in other school plays Temperament:
     Grouchy Interests: Musicals, The Colour Black, Her Favorite Shirt '
   m_CharacterName: Cindy
+  m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 5877937984103989589}
   m_SpeechText: {fileID: 4105054017426039500}
   m_StatsText: {fileID: 185336271861651809}

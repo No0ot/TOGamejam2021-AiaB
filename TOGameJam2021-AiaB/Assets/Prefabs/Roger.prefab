@@ -273,6 +273,7 @@ MonoBehaviour:
   m_CharacterDescription: 'Experience: None Temperament: Analytic Interests: School,
     Math, DND '
   m_CharacterName: Roger
+  m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 4787380498338731857}
   m_SpeechText: {fileID: 1817876970893735352}
   m_StatsText: {fileID: 695635511800731271}

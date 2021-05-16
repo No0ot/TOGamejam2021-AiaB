@@ -140,6 +140,7 @@ MonoBehaviour:
   m_CharacterDescription: 'Experience: Participated in other school plays Temperament:
     Preppy Interests: Style, Looks, Fashion Trends '
   m_CharacterName: Monique
+  m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 7969696179127091213}
   m_SpeechText: {fileID: 968535238511519378}
   m_StatsText: {fileID: 3869990978249770829}

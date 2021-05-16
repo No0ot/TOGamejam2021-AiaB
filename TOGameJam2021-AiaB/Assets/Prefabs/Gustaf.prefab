@@ -140,6 +140,7 @@ MonoBehaviour:
   m_CharacterDescription: 'Experience: Plenty Temperament: Pretentious Interests:
     Theatre, Musicals, Acting '
   m_CharacterName: Gustaf
+  m_performanceSoundName: GoodPerformance
   m_SpeechBubble: {fileID: 5995399108084210076}
   m_SpeechText: {fileID: 546219087390640391}
   m_StatsText: {fileID: 5007216590683211344}
