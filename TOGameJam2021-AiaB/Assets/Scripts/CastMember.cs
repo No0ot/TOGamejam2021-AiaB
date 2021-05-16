@@ -299,6 +299,9 @@ public class CastMember : MonoBehaviour
             Color c = sr.color;
             c.a = a;
             sr.color = c;
+            Color sc = GetSprite().color;
+            sc.a = c.a;
+            GetSprite().color = sc;
         }
     }
 
