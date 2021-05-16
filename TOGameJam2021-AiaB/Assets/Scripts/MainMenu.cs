@@ -33,22 +33,22 @@ public class MainMenu : MonoBehaviour
 
     public void IncreaseNumberOfEnemies()
     {
-        if (NumberOfEnemies < 8)
+        if (NumberOfEnemies < 5)
             NumberOfEnemies++;
     }
     public void DecreaseNumberOfEnemies()
     {
-        if (NumberOfEnemies > 4)
+        if (NumberOfEnemies > 2)
             NumberOfEnemies--;
     }
     public void IncreaseNumberOfRounds()
     {
-        if (NumberOfRounds < 8) 
+        if (NumberOfRounds < 4) 
             NumberOfRounds++;
     }
     public void DecreaseNumberOfRounds()
     {
-        if (NumberOfRounds >3)
+        if (NumberOfRounds >1)
             NumberOfRounds--;
     }
 
