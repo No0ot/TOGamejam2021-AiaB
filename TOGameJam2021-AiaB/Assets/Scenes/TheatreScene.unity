@@ -3094,8 +3094,11 @@ MonoBehaviour:
   NextRoundButton: {fileID: 1967744778}
   WinLossScreen: {fileID: 437071060}
   WinLossText: {fileID: 1893157219}
-  BackgroundSprites: []
-  Background: {fileID: 0}
+  BackgroundSprites:
+  - {fileID: 21300000, guid: b188e1c5de6146d4e9beb8209ecf7f6a, type: 3}
+  - {fileID: 21300000, guid: 96ff64421652a894ea27667c908e20ed, type: 3}
+  - {fileID: 21300000, guid: 146d3f16ebaecf2469002779ee708fc4, type: 3}
+  Background: {fileID: 665855533}
 --- !u!4 &1872339686
 Transform:
   m_ObjectHideFlags: 0
