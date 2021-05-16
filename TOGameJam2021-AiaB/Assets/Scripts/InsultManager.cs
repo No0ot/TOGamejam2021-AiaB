@@ -360,7 +360,10 @@ public class InsultManager : MonoBehaviour
     {
         ResetInsults();
         m_OverallUICanvas.SetActive(false);
-        
+        if (InsultSpeechBubble.activeInHierarchy)
+        {
+            InsultSpeechBubble.SetActive(false);
+        }
     }
 
     public void OnRoundEnded()
@@ -370,6 +373,10 @@ public class InsultManager : MonoBehaviour
             m_ActingInsultUsed[i] = false;
             m_CostumeInsultUsed[i] = false;
             m_InterestInsultUsed[i] = false;
+        }
+        if (InsultSpeechBubble.activeInHierarchy)
+        {
+            InsultSpeechBubble.SetActive(false);
         }
     }
 
