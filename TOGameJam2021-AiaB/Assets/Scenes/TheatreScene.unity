@@ -3494,10 +3494,10 @@ MonoBehaviour:
   - {fileID: 1032588498197138930, guid: b62339d616d1a4c4fa17918232057977, type: 3}
   numAuditions: 4
   numRounds: 3
-  finalSpeechTime: 1.5
+  finalSpeechTime: 2
   fadeOutTime: 1.5
   fadeInTime: 1.5
-  auditionInterval: 3.25
+  auditionInterval: 3.75
   canInsultWhileStillArriving: 0
   recapScreenPercent: 100
   darkenAmount: 0.25
