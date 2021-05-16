@@ -44,15 +44,18 @@ public class CastMember : MonoBehaviour
 
     // Animation properties
     private SpriteRenderer m_sr;
+    private SpriteRenderer m_sbsr;
     private SpriteRenderer m_cmsr;
     private SpriteRenderer m_cmbgsr;
     private bool fadingIn; // Whether the character is currently fading in or out.
     private float fadeTime; // Amount of time that the current animation should play for.
+    private float speechTime; // Amount of time that the final speech bubble stays up for before fading out can commence.
     private float elapsedTime; // Amount of time since the current animation started.
 
     private void Awake()
     {
         m_sr = GetComponent<SpriteRenderer>();
+        m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
 
@@ -73,20 +76,35 @@ public class CastMember : MonoBehaviour
     void Start()
     {
         m_sr = GetComponent<SpriteRenderer>();
+        m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
         m_fCurrentConfidence = m_fMaxConfidence;
+        m_SpeechText.color = new Color(0, 0, 0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (elapsedTime <= fadeTime)
+        if (elapsedTime <= fadeTime + speechTime)
         {
             elapsedTime += Time.deltaTime;
             CalcOpacity();
             if (m_sr.color.a <= 0.0f)
                 gameObject.SetActive(false);
+            if (m_sr.color.a >= 1.0f)
+            {
+                m_SpeechBubble.SetActive(true);
+                m_SpeechText.gameObject.SetActive(true);
+            }
+        }
+
+        if (speechTime > 0.0f && elapsedTime > speechTime) // speechTime is 0.0f if there is no speech to time.
+        {
+            elapsedTime -= speechTime;
+            speechTime = 0.0f;
+            m_SpeechBubble.SetActive(false);
+            m_SpeechText.gameObject.SetActive(false);
         }
 
         if (fadingIn) // The cast member fades out only after it survives or is eliminated, which always happens after it kills itself. In this way, this will only be called until the audition is over.
@@ -157,6 +175,14 @@ public class CastMember : MonoBehaviour
         // Set elapsed time to the portion of the new animation that it would be based on the current alpha value
         elapsedTime = m_sr.color.a * fadeTime;
         CalcOpacity();
+
+        m_SpeechBubble.SetActive(false);
+        m_SpeechText.gameObject.SetActive(false);
+    }
+
+    public void OnFinalSpeech(float finalSpeechTime)
+    {
+        speechTime = finalSpeechTime;
     }
 
     public void OnFadeOut(float secondsToFade)
@@ -167,10 +193,16 @@ public class CastMember : MonoBehaviour
         // Set elapsed time to the portion of the new animation that it would be based on the current alpha value
         elapsedTime = (1.0f - m_sr.color.a) * fadeTime;
         CalcOpacity();
+
+        m_SpeechBubble.SetActive(true);
+        m_SpeechText.gameObject.SetActive(true);
     }
 
     private void CalcOpacity()
     {
+        if (speechTime > 0.0f)
+            return;
+
         float t = Mathf.Clamp(elapsedTime / fadeTime, 0.0f, 1.0f);
         float a = fadingIn ? Mathf.Lerp(0.0f, 1.0f, t) : Mathf.Lerp(1.0f, 0.0f, t);
 
