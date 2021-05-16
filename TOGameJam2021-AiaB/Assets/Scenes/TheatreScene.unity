@@ -3412,7 +3412,7 @@ MonoBehaviour:
   InsultText: {fileID: 1737441899}
   InsultSpeechBubble: {fileID: 635314545}
   TimePerInsult: 10.99
-  TimeForResponse: 2
+  TimeForResponse: 3
   TimeSprite: {fileID: 1911662768}
   StopWatchSprites:
   - {fileID: 21300000, guid: 3745ffa3e1ba0c148bf97df45fe3b27b, type: 3}
