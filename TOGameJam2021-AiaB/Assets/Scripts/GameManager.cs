@@ -127,6 +127,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+            OnQuitGame();
+
         if (!showingRecap)
         {
             // After the audition ends, timeSinceAuditionEnded is set to 0. When this value exceeds auditionInterval, the new actor starts arriving on stage whether or not the last one has finished leaving yet.

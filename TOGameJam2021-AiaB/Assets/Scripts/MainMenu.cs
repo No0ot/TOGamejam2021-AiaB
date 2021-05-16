@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame()
     {
-        Debug.Log("Placeholder for game quitting");
+        //Debug.Log("Placeholder for game quitting");
         Application.Quit();
     }
     // Start is called before the first frame update
