@@ -27,6 +27,8 @@ public class CharacterEffect : MonoBehaviour
             m_sr = GetComponent<SpriteRenderer>();
             m_sr.sprite = sprites[currentSprite];
         }
+        else
+            gameObject.SetActive(false);
     }
 
     private void Start()
@@ -37,6 +39,8 @@ public class CharacterEffect : MonoBehaviour
         m_sr = GetComponent<SpriteRenderer>();
         if (sprites.Length > 0)
             m_sr.sprite = sprites[currentSprite];
+        else
+            gameObject.SetActive(false);
     }
 
     void Update()
@@ -51,6 +55,8 @@ public class CharacterEffect : MonoBehaviour
                 currentSprite = sprites.Length > 1 ? currentSprite % sprites.Length : 0;
                 m_sr.sprite = sprites[currentSprite];
             }
+            else
+                gameObject.SetActive(false);
         }
 
         float totalTime = fadeInDuration + fullyVisibleDuration + fadeOutDuration;
