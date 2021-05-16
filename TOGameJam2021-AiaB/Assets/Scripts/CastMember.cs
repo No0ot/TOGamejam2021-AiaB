@@ -37,6 +37,8 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     TMP_Text m_SpeechText;
     [SerializeField]
+    TMP_Text m_StatsText;
+    [SerializeField]
     string m_PerformanceText;
     [SerializeField]
     string m_QuitQuote;
@@ -44,7 +46,7 @@ public class CastMember : MonoBehaviour
 
     // Animation properties
     private SpriteRenderer m_sr;
-    private SpriteRenderer m_sbsr;
+    //private SpriteRenderer m_sbsr;
     private SpriteRenderer m_cmsr;
     private SpriteRenderer m_cmbgsr;
     private bool fadingIn; // Whether the character is currently fading in or out.
@@ -57,7 +59,7 @@ public class CastMember : MonoBehaviour
     private void Awake()
     {
         m_sr = GetComponent<SpriteRenderer>();
-        m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
+        //m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
 
@@ -79,11 +81,12 @@ public class CastMember : MonoBehaviour
     {
         silent = false;
         m_sr = GetComponent<SpriteRenderer>();
-        m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
+        //m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
         m_fCurrentConfidence = m_fMaxConfidence;
         m_SpeechText.color = new Color(0, 0, 0, 1);
+        m_StatsText.text = "";
     }
 
     // Update is called once per frame
@@ -101,6 +104,12 @@ public class CastMember : MonoBehaviour
                 {
                     m_SpeechBubble.SetActive(true);
                     m_SpeechText.gameObject.SetActive(true);
+                }
+                else
+                {
+                    m_StatsText.text =
+                        "Insults in round: " + m_attacksTakenInRound + "\n" +
+                        "Insults in total: " + m_attacksTakenInTotal;
                 }
             }
         }
@@ -197,7 +206,7 @@ public class CastMember : MonoBehaviour
         fadeTime = secondsToFade;
 
         // Set elapsed time to the portion of the new animation that it would be based on the current alpha value
-        elapsedTime = Mathf.Min(m_sr.color.a * fadeTime, 0.1f);
+        elapsedTime = Mathf.Min(m_sr.color.a * fadeTime, 0.01f);
         CalcOpacity();
 
         m_SpeechBubble.SetActive(false);
@@ -218,8 +227,12 @@ public class CastMember : MonoBehaviour
         elapsedTime = (1.0f - m_sr.color.a) * fadeTime;
         CalcOpacity();
 
-        m_SpeechBubble.SetActive(true);
-        m_SpeechText.gameObject.SetActive(true);
+        if(!silent)
+        {
+            m_SpeechBubble.SetActive(true);
+            m_SpeechText.gameObject.SetActive(true);
+        }
+        m_StatsText.text = "";
     }
 
     private void CalcOpacity()
@@ -237,6 +250,12 @@ public class CastMember : MonoBehaviour
             c.a = a;
             sr.color = c;
         }
+    }
+
+    public void OnNextRound()
+    {
+        m_attacksTakenInRound = 0;
+        m_timeTakenInRound = 0;
     }
 
     private void DisplayPerformanceText()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -70,6 +71,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the character profile object.")]
     private GameObject characterProfile;
+    [SerializeField]
+    [Tooltip("Reference to the recap menu (next round button).")]
+    private GameObject recapMenu;
 
 
     private void Awake()
@@ -162,6 +166,7 @@ public class GameManager : MonoBehaviour
     private void ShowRecapScene()
     {
         showingRecap = true;
+        recapMenu.SetActive(true);
         List<CastMember> cmlist = new List<CastMember>();
         foreach (GameObject audition in selectedAuditionsList)
         {
@@ -201,6 +206,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void HideRecapScreen()
+    {
+        showingRecap = false;
+        recapMenu.SetActive(false);
+
+        List<CastMember> cmlist = new List<CastMember>();
+        foreach (GameObject audition in selectedAuditionsList)
+        {
+            if (audition.activeInHierarchy)
+            {
+                CastMember cm = audition.GetComponent<CastMember>();
+                cm.OnFadeOut(Mathf.Min(1.0f, auditionInterval));
+            }
+        }
+    }
+
     // This function is to select the next audition who will be shown, from the list of auditions remaining in the round.
     private void NextAudition()
     {
@@ -235,7 +256,8 @@ public class GameManager : MonoBehaviour
     private void NextRound()
     {
         currentRound++;
-        showingRecap = false;
+        HideRecapScreen();
+
         if (currentRound > numRounds)
         {
             LoseGame();
@@ -257,20 +279,23 @@ public class GameManager : MonoBehaviour
                 else if(cm.GetEliminatedInRound() == 0)
                 {
                     auditionsLeftInRound.Add(audition);
+                    cm.OnNextRound();
                 }
             }
         }
 
-        timeSinceAuditionEnded = auditionInterval; // Will trigger NextAudition() on next update.
+        timeSinceAuditionEnded = currentRound == 1 ? auditionInterval : 0.0f; // Will trigger NextAudition() when it reaches auditionInterval.
     }
 
     private void LoseGame()
     {
         Debug.Log("LoseGame function not yet implemented.");
+        OnQuitGame();
     }
     private void WinGame()
     {
         Debug.Log("WinGame function not yet implemented.");
+        OnQuitGame();
     }
 
 
@@ -306,5 +331,15 @@ public class GameManager : MonoBehaviour
         cm.OnFadeOut(fadeOutTime);
         characterProfile.SetActive(false);
         timeSinceAuditionEnded = 0.0f;
+    }
+
+    public void OnNextRound()
+    {
+        NextRound();
+    }
+
+    public void OnQuitGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
