@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,7 +75,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the recap menu (next round button).")]
     private GameObject recapMenu;
-
+    [SerializeField]
+    [Tooltip("Reference to the win/Loss screen.")]
+    private GameObject WinLossScreen;
+    [SerializeField]
+    [Tooltip("Reference to the win/Loss text item.")]
+    private TMP_Text WinLossText;
 
     private void Awake()
     {
