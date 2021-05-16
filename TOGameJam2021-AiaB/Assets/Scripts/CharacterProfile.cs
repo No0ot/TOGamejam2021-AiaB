@@ -33,6 +33,14 @@ public class CharacterProfile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        TriggerUpdate();
+    }
+
+    public void TriggerUpdate()
+    {
+        GameObject audition = GameManager.Instance.GetCurrentAudition();
+        ChangeHeadshot(audition.GetComponent<CastMember>().m_Headshot);
+        ChangeDescription(audition.GetComponent<CastMember>().m_CharacterDescription);
+        ChangeName(audition.GetComponent<CastMember>().m_CharacterName);
     }
 }

@@ -20,11 +20,12 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     public int[] m_InterestEffectiveness;
     [SerializeField]
-    Sprite m_Headshot;
+    public Sprite m_Headshot;
     [SerializeField]
-    string m_CharacterDescription;
-
-    string m_CharacterName;
+    public string m_CharacterDescription;
+    [SerializeField]
+    public string m_CharacterBio;
+    public string m_CharacterName;
 
     int m_NumofAttacks;
 
