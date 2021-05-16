@@ -57,6 +57,19 @@ public class GameManager : MonoBehaviour
     [Tooltip("The amount of the screen taken up by the actors when arrayed together in the recap screen.")]
     [Range(0, 100)]
     private float recapScreenPercent;
+    [SerializeField]
+    [Tooltip("The amount to darken the characters to when they are eliminated. 0 is fully dark (black), 1 is fully light (normal - not white).")]
+    [Range(0, 1)]
+    private float darkenAmount;
+    [SerializeField]
+    [Tooltip("The material used when setting characters to be fully greyscale.")]
+    private Material greyscaleMaterial;
+    [SerializeField]
+    [Tooltip("The material used when setting characters to be fully coloured in.")]
+    private Material defaultMaterial;
+    [SerializeField]
+    [Tooltip("Reference to the character profile object.")]
+    private GameObject characterProfile;
 
 
     private void Awake()
@@ -68,7 +81,8 @@ public class GameManager : MonoBehaviour
     {
         //Import the number of rounds and auditions from the settings set by user in main menu
         numRounds = PlayerPrefs.GetInt("NumberOfRounds") ;
-        numAuditions = PlayerPrefs.GetInt("NumberOfAuditioners");
+        //numAuditions = PlayerPrefs.GetInt("NumberOfAuditioners");
+        numAuditions = 2;
         if (fullAuditionsList.Count < 1)
             Debug.LogError("Full Auditions List is not yet populated!");
         if (numAuditions < 1)
@@ -78,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         SelectAuditions();
 
-        currentRound = -1;
+        currentRound = 0;
         NextRound();
     }
 
@@ -94,12 +108,15 @@ public class GameManager : MonoBehaviour
                 if (timeSinceAuditionEnded > auditionInterval)
                 {
                     NextAudition();
-                    timeSinceAuditionStarted = 0.0f; // When this reaches fadeInTime (or immediately if CanInsultWhileAnimating is true), this will cause update to call InsultManager.Instance.OnAuditionStarted())
-                    arrivingOnStage = true;
-                    currentAudition.SetActive(true);
-                    CastMember cm = currentAudition.GetComponent<CastMember>();
-                    cm.SetSilent(false);
-                    cm.OnFadeIn(fadeInTime);
+                    if (!showingRecap)
+                    {
+                        timeSinceAuditionStarted = 0.0f; // When this reaches fadeInTime (or immediately if CanInsultWhileAnimating is true), this will cause update to call InsultManager.Instance.OnAuditionStarted())
+                        arrivingOnStage = true;
+                        currentAudition.SetActive(true);
+                        CastMember cm = currentAudition.GetComponent<CastMember>();
+                        cm.SetSilent(false);
+                        cm.OnFadeIn(fadeInTime);
+                    }
                 }
             }
             // The TimeSinceAuditionStarted does not tick up after the end of the previous audition, but it does not reset until the start of the new one (when the new actor starts fading in - after the auditionInterval).
@@ -151,22 +168,38 @@ public class GameManager : MonoBehaviour
             CastMember cm = audition.GetComponent<CastMember>();
             if (cm.GetEliminatedInRound() == currentRound) // Actor was eliminated this round
                 cmlist.Add(cm);
-            if (cm.GetEliminatedInRound() == 0) // Actor is still in the game
+            else if (cm.GetEliminatedInRound() == 0) // Actor is still in the game
                 cmlist.Add(cm);
         }
 
         int auditionsInRound = cmlist.Count;
-        float midpoint = auditionsInRound / 2.0f;
+        float midpoint = (auditionsInRound - 1) / 2.0f;
         int i = 0;
         foreach (CastMember cm in cmlist)
         {
-            float pos = ((i - midpoint) / midpoint) * (Screen.width * recapScreenPercent);
-            cm.gameObject.transform.position = new Vector2(pos, 0.0f);
             cm.SetSilent(true);
             cm.OnFadeIn(1.0f);
+            cm.gameObject.SetActive(true);
+
+            float pc = recapScreenPercent / 100.0f;
+            float offset = ((i - midpoint) / (auditionsInRound + 1)) * pc;
+            Vector2 pos = Camera.current.ViewportToWorldPoint(new Vector3(0.5f + offset, 0.5f, 0.0f));
+            cm.gameObject.transform.position = pos;
+
+            if (cm.GetEliminatedInRound() == currentRound)
+            {
+                SpriteRenderer sr = cm.GetComponent<SpriteRenderer>();
+                sr.material = greyscaleMaterial;
+                Color c = sr.color;
+                c.r *= darkenAmount;
+                c.g *= darkenAmount;
+                c.b *= darkenAmount;
+                sr.color = c;
+            }
+
+            i++;
         }
     }
-
 
     // This function is to select the next audition who will be shown, from the list of auditions remaining in the round.
     private void NextAudition()
@@ -193,6 +226,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Set any relevant visuals
+        characterProfile.SetActive(true);
         currentAudition.transform.position = Vector2.zero;
     }
 
@@ -209,6 +243,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+
             // Ensure that the relevant lists are instantiated.
             if (auditionsLeftInRound == null)
                 auditionsLeftInRound = new List<GameObject>();
@@ -260,6 +295,7 @@ public class GameManager : MonoBehaviour
         CastMember cm = currentAudition.GetComponent<CastMember>();
         cm.OnFinalSpeech(finalSpeechTime);
         cm.OnFadeOut(fadeOutTime);
+        characterProfile.SetActive(false);
         timeSinceAuditionEnded = 0.0f;
     }
     public void OnEliminate(GameObject castMember)
@@ -268,6 +304,7 @@ public class GameManager : MonoBehaviour
         CastMember cm = currentAudition.GetComponent<CastMember>();
         cm.OnFinalSpeech(finalSpeechTime);
         cm.OnFadeOut(fadeOutTime);
+        characterProfile.SetActive(false);
         timeSinceAuditionEnded = 0.0f;
     }
 }

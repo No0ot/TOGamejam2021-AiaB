@@ -1461,6 +1461,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1173232320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7567480058688654483, guid: 198901d565aeba94d844e49ed98597b8, type: 3}
+  m_PrefabInstance: {fileID: 1853925579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1248317157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2261,6 +2266,10 @@ MonoBehaviour:
   auditionInterval: 4.5
   canInsultWhileStillArriving: 0
   recapScreenPercent: 60
+  darkenAmount: 0.5
+  greyscaleMaterial: {fileID: 2100000, guid: 89e3376d307467a40b0f9fe103d4eaf8, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  characterProfile: {fileID: 1173232320}
 --- !u!4 &1872339686
 Transform:
   m_ObjectHideFlags: 0

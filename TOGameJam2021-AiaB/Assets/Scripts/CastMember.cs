@@ -77,6 +77,7 @@ public class CastMember : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        silent = false;
         m_sr = GetComponent<SpriteRenderer>();
         m_sbsr = m_SpeechBubble.GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
@@ -92,12 +93,15 @@ public class CastMember : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             CalcOpacity();
-            if (m_sr.color.a <= 0.0f)
-                gameObject.SetActive(false);
-            if (m_sr.color.a >= 1.0f && !silent)
+            if (elapsedTime > fadeTime + speechTime)
             {
-                m_SpeechBubble.SetActive(true);
-                m_SpeechText.gameObject.SetActive(true);
+                if (!fadingIn)
+                    gameObject.SetActive(false);
+                else if (!silent)
+                {
+                    m_SpeechBubble.SetActive(true);
+                    m_SpeechText.gameObject.SetActive(true);
+                }
             }
         }
 
@@ -109,7 +113,7 @@ public class CastMember : MonoBehaviour
             m_SpeechText.gameObject.SetActive(false);
         }
 
-        if (fadingIn) // The cast member fades out only after it survives or is eliminated, which always happens after it kills itself. In this way, this will only be called until the audition is over.
+        if (fadingIn && !silent) // The cast member fades out only after it survives or is eliminated, which always happens after it kills itself. In this way, this will only be called until the audition is over.
         {
             if (gameObject.activeInHierarchy)
             {
@@ -174,11 +178,17 @@ public class CastMember : MonoBehaviour
         if (value == true)
         {
             silent = true;
+            ConfidenceMeter.SetActive(false);
+            ConfidenceMeterBackground.SetActive(false);
             m_SpeechBubble.SetActive(false);
             m_SpeechText.gameObject.SetActive(false);
         }
         else
+        {
             silent = false;
+            ConfidenceMeter.SetActive(true);
+            ConfidenceMeterBackground.SetActive(true);
+        }
     }
 
     public void OnFadeIn(float secondsToFade)
@@ -187,7 +197,7 @@ public class CastMember : MonoBehaviour
         fadeTime = secondsToFade;
 
         // Set elapsed time to the portion of the new animation that it would be based on the current alpha value
-        elapsedTime = m_sr.color.a * fadeTime;
+        elapsedTime = Mathf.Min(m_sr.color.a * fadeTime, 0.1f);
         CalcOpacity();
 
         m_SpeechBubble.SetActive(false);
