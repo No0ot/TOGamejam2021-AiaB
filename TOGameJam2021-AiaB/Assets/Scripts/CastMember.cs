@@ -276,6 +276,7 @@ public class CastMember : MonoBehaviour
     {
         m_attacksTakenInRound = 0;
         m_timeTakenInRound = 0;
+        m_fCurrentConfidence = m_fMaxConfidence;
     }
 
     private void DisplayPerformanceText()
