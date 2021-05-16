@@ -95,9 +95,16 @@ public class InsultManager : MonoBehaviour
     {
         if (TimeRemainingForResponse > 0.0f)
         {
+            InsultSpeechBubble.SetActive(true);
+            m_BackButton.SetActive(false);
+
             TimeRemainingForResponse -= Time.deltaTime;
             if (TimeRemainingForResponse <= 0.0f)
             {
+                InsultSpeechBubble.SetActive(false);
+                if (!m_UICanvas.activeInHierarchy && m_OverallUICanvas.activeInHierarchy)
+                    m_BackButton.SetActive(true);
+
                 GameManager.Instance.GetCurrentAudition().GetComponent<CastMember>().OnRelax();
                 TimeRemaining = TimePerInsult;
             }
