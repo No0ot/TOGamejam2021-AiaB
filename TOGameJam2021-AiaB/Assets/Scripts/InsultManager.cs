@@ -74,7 +74,7 @@ public class InsultManager : MonoBehaviour
 
     private void Start()
     {
-
+        InsultText.color = new Color(0, 0, 0, 1);
     }
 
     public void DisplayActingInsults()
