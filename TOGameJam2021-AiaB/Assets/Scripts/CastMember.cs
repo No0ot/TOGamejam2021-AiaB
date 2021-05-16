@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class CastMember : MonoBehaviour
@@ -29,6 +30,16 @@ public class CastMember : MonoBehaviour
 
     int m_NumofAttacks;
 
+    [SerializeField]
+    GameObject m_SpeechBubble;
+    [SerializeField]
+    TMP_Text m_SpeechText;
+    [SerializeField]
+    string m_PerformanceText;
+    [SerializeField]
+    string m_QuitQuote;
+
+
     // Animation properties
     private SpriteRenderer m_sr;
     private SpriteRenderer m_cmsr;
@@ -52,6 +63,8 @@ public class CastMember : MonoBehaviour
         }
         
         elapsedTime = 0.0f;
+
+        m_SpeechText.text = m_PerformanceText;
     }
 
     // Start is called before the first frame update
@@ -116,6 +129,7 @@ public class CastMember : MonoBehaviour
 
     void KillSelf()
     {
+        m_SpeechText.text = m_QuitQuote;
         GameManager.Instance.OnEliminate(this.gameObject);
         //Removes itself from the gamemanagers list
     }
@@ -152,5 +166,15 @@ public class CastMember : MonoBehaviour
             c.a = a;
             sr.color = c;
         }
+    }
+
+    private void DisplayPerformanceText()
+    {
+
+    }
+
+    private void DisplayQuitQuote()
+    {
+
     }
 }
