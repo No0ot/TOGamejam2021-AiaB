@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 enum InsultType
 {
@@ -32,6 +33,36 @@ public class InsultManager : MonoBehaviour
     bool[] m_CostumeInsultUsed = { false, false, false, false };
     [SerializeField]
     bool[] m_InterestInsultUsed = { false, false, false, false };
+
+    [SerializeField]
+    string[] VoiceInsults;
+    [SerializeField]
+    string[] ShowmanshipInsults;
+    [SerializeField]
+    string[] AccuracyInsults;
+    [SerializeField]
+    string[] ExperienceInsults;
+    [SerializeField]
+    string[] StyleInsults;
+    [SerializeField]
+    string[] ShoesInsults;
+    [SerializeField]
+    string[] HairInsults;
+    [SerializeField]
+    string[] ShirtInsults;
+    [SerializeField]
+    string[] HobbyInsults;
+    [SerializeField]
+    string[] TheatreGenreInsults;
+    [SerializeField]
+    string[] FoodInsults;
+    [SerializeField]
+    string[] AcademicsInsults;
+    [SerializeField]
+    TMP_Text InsultText;
+    [SerializeField]
+    GameObject InsultSpeechBubble;
+
 
     InsultType insultType;
     // Start is called before the first frame update
@@ -162,6 +193,11 @@ public class InsultManager : MonoBehaviour
 
     public void UseInsult(GameObject usedinsult)
     {
+        if(!InsultSpeechBubble.activeInHierarchy)
+        {
+            InsultSpeechBubble.SetActive(true);
+        }
+
         switch (insultType)
         {
             case InsultType.ACTING:
@@ -171,7 +207,28 @@ public class InsultManager : MonoBehaviour
                     {
                         m_ActingInsultUsed[i] = true;
                         //Debug.Log("ACTINGINSULT" + i);
-
+                        int r = 0;
+                        switch(i)
+                        {
+                            case 0:
+                                r = Random.Range(0, VoiceInsults.Length);
+                                InsultText.text = VoiceInsults[r];
+                                break;
+                            case 1:
+                                r = Random.Range(0, ShowmanshipInsults.Length);
+                                InsultText.text = ShowmanshipInsults[r];
+                                break;
+                            case 2:
+                                r = Random.Range(0, AccuracyInsults.Length);
+                                InsultText.text = AccuracyInsults[r];
+                                break;
+                            case 3:
+                                r = Random.Range(0, ExperienceInsults.Length);
+                                InsultText.text = ExperienceInsults[r];
+                                break;
+                            default: 
+                                break;
+                        }
                     }
                 }
                 break;
@@ -182,6 +239,28 @@ public class InsultManager : MonoBehaviour
                     {
                         m_CostumeInsultUsed[i] = true;
                         //Debug.Log("COSTUMEINSULT" + i);
+                        int r = 0;
+                        switch (i)
+                        {
+                            case 0:
+                                r = Random.Range(0, StyleInsults.Length);
+                                InsultText.text = StyleInsults[r];
+                                break;
+                            case 1:
+                                r = Random.Range(0, ShoesInsults.Length);
+                                InsultText.text = ShoesInsults[r];
+                                break;
+                            case 2:
+                                r = Random.Range(0, HairInsults.Length);
+                                InsultText.text = HairInsults[r];
+                                break;
+                            case 3:
+                                r = Random.Range(0, ShirtInsults.Length);
+                                InsultText.text = ShirtInsults[r];
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 break;
@@ -192,6 +271,28 @@ public class InsultManager : MonoBehaviour
                     {
                         m_InterestInsultUsed[i] = true;
                         //Debug.Log("INTERESTINSULT" + i);
+                        int r = 0;
+                        switch (i)
+                        {
+                            case 0:
+                                r = Random.Range(0, HobbyInsults.Length);
+                                InsultText.text = HobbyInsults[r];
+                                break;
+                            case 1:
+                                r = Random.Range(0, TheatreGenreInsults.Length);
+                                InsultText.text = TheatreGenreInsults[r];
+                                break;
+                            case 2:
+                                r = Random.Range(0, FoodInsults.Length);
+                                InsultText.text = FoodInsults[r];
+                                break;
+                            case 3:
+                                r = Random.Range(0, AcademicsInsults.Length);
+                                InsultText.text = AcademicsInsults[r];
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 break;
@@ -204,6 +305,7 @@ public class InsultManager : MonoBehaviour
     {
         ResetInsults();
         m_OverallUICanvas.SetActive(false);
+        
     }
 
     public void OnRoundEnded()
@@ -218,6 +320,7 @@ public class InsultManager : MonoBehaviour
 
     public void OnAuditionStarted()
     {
+        InsultSpeechBubble.SetActive(false);
         m_OverallUICanvas.SetActive(true);
     }
 }
