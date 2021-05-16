@@ -2934,7 +2934,7 @@ MonoBehaviour:
   - {fileID: 1032588498197138930, guid: 1962d0f497be3f94bba611c5dab9e67b, type: 3}
   - {fileID: 1032588498197138930, guid: fcc3f51c5d027054993e53f518c9d301, type: 3}
   - {fileID: 1032588498197138930, guid: b62339d616d1a4c4fa17918232057977, type: 3}
-  numAuditions: 5
+  numAuditions: 4
   numRounds: 3
   finalSpeechTime: 1.5
   fadeOutTime: 1.5
