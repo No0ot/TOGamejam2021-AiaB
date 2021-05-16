@@ -56,7 +56,11 @@ public class CastMember : MonoBehaviour
     Sprite AngryPose;
     [SerializeField]
     Sprite QuitPose;
-        
+
+    [SerializeField]
+    CharacterEffect SweatDrop;
+    [SerializeField]
+    CharacterEffect AngerLines;
 
 
     // Animation properties
@@ -113,6 +117,9 @@ public class CastMember : MonoBehaviour
             if (elapsedTime > fadeTime + speechTime)
             {
                 SpriteReference.sprite = PerformancePose;
+                if (SweatDrop != null)
+                    SweatDrop.OnDisplay();
+
                 if (!fadingIn)
                     gameObject.SetActive(false);
                 else if (!silent)
@@ -197,6 +204,8 @@ public class CastMember : MonoBehaviour
             case InsultDamageType.SUPER_EFFECTIVE:
                 FindObjectOfType<AudioManager>().PlaySoundByName("SuperEffectiveHit");
                 m_fCurrentConfidence -= 40.0f;
+                if (AngerLines != null)
+                    AngerLines.OnDisplay();
                 break;
             default:
                 break;
