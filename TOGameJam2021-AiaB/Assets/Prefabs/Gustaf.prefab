@@ -185,8 +185,8 @@ MonoBehaviour:
   m_CostumeEffectiveness: 01000000010000000100000001000000
   m_InterestEffectiveness: 02000000030000000100000001000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: 'Gustaf: blah blah blah'
-  m_CharacterBio: 
+  m_CharacterDescription: 'Experience: Plenty Temperament: Pretentious Interests:
+    Theatre, Musicals, Acting '
   m_CharacterName: Gustaf
 --- !u!1 &6139464665412095872
 GameObject:

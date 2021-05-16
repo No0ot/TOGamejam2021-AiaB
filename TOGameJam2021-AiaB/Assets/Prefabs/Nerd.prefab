@@ -185,8 +185,8 @@ MonoBehaviour:
   m_CostumeEffectiveness: 01000000010000000000000002000000
   m_InterestEffectiveness: 02000000020000000100000003000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: 'nerd: blah blah blah'
-  m_CharacterBio: 
+  m_CharacterDescription: 'Experience: None Temperament: Analytic Interests: School,
+    Math, DND '
   m_CharacterName: Nerd
 --- !u!1 &6139464665412095872
 GameObject:

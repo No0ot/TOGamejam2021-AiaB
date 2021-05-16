@@ -185,8 +185,8 @@ MonoBehaviour:
   m_CostumeEffectiveness: 02000000010000000100000000000000
   m_InterestEffectiveness: 02000000010000000000000002000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: 'Band: blah blah blah'
-  m_CharacterBio: 
+  m_CharacterDescription: 'Experience: Participated in the Band every year Temperament:
+    Musical Interests: Singing, Trumpet, performance '
   m_CharacterName: Band
 --- !u!1 &6139464665412095872
 GameObject:

@@ -23,8 +23,6 @@ public class CastMember : MonoBehaviour
     public Sprite m_Headshot;
     [SerializeField]
     public string m_CharacterDescription;
-    [SerializeField]
-    public string m_CharacterBio;
     public string m_CharacterName;
 
     int m_NumofAttacks;

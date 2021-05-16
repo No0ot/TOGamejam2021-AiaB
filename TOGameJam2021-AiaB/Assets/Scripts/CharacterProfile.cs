@@ -7,21 +7,26 @@ public class CharacterProfile : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Text ProfileDescription;
-    [SerializeField] Sprite Headshot;
+    [SerializeField] Image Headshot;
     [SerializeField] Text ProfileName;
 
     public void ChangeHeadshot(Sprite newImage)
     {
-        Headshot = newImage;
+        Headshot.sprite = newImage;
     }
 
     public void ChangeDescription(string newDescription)
     {
+        //pasting newline characters in inspector doesnt work, these two lines format the bios properly
+        newDescription = newDescription.Replace("Interests:", "\n\nInterests:");
+        newDescription = newDescription.Replace("Temperament:", "\n\nTemperament:");
         ProfileDescription.text = newDescription;
     }
 
     public void ChangeName( string newName)
     {
+        //a glitch exists where "(clone)" is appended to name for some reason
+        newName = newName.Replace("(Clone)", "");
         ProfileName.text = newName;
     }
 

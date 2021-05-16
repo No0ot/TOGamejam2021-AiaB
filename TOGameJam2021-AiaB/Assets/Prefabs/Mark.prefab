@@ -185,8 +185,8 @@ MonoBehaviour:
   m_CostumeEffectiveness: 00000000020000000300000002000000
   m_InterestEffectiveness: 02000000010000000100000001000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: 'mark: blah blah blah'
-  m_CharacterBio: 
+  m_CharacterDescription: 'Experience: None Temperament: Proud Interests: Basketball,
+    sports, Looking goooood '
   m_CharacterName: Mark
 --- !u!1 &6139464665412095872
 GameObject:
