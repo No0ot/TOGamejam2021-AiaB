@@ -95,8 +95,7 @@ public class CastMember : MonoBehaviour
         {
             case InsultDamageType.NO_EFFECT:
                 //nothing
-
-                    break;
+                break;
             case InsultDamageType.MILDLY_EFFECTIVE:
                 m_fCurrentConfidence -= 10.0f;
                 break;
@@ -104,7 +103,7 @@ public class CastMember : MonoBehaviour
                 m_fCurrentConfidence -= 20.0f;
                 break;
             case InsultDamageType.SUPER_EFFECTIVE:
-                m_fCurrentConfidence -= 50.0f;
+                m_fCurrentConfidence -= 40.0f;
                 break;
             default:
                 break;

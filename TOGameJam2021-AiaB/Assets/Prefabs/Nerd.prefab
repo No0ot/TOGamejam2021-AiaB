@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1032588498197138931}
   - component: {fileID: 7386492082338385322}
   m_Layer: 0
-  m_Name: Gus
+  m_Name: Nerd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 0.21804914, g: 0.50570846, b: 0.9433962, a: 1}
+  m_Color: {r: 0.15566039, g: 1, b: 0.92578363, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,12 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fa233ab91adb34b9e14b243c02ec39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fMaxConfidence: 40
+  m_fMaxConfidence: 50
   ConfidenceMeter: {fileID: 930814635333607097}
-  ConfidenceMeterBackground: {fileID: 6139464665412095872}
-  m_ActingEffectiveness: 01000000010000000100000001000000
-  m_CostumeEffectiveness: 02000000010000000000000001000000
-  m_InterestEffectiveness: 02000000010000000300000000000000
+  m_ActingEffectiveness: 01000000000000000200000001000000
+  m_CostumeEffectiveness: 01000000010000000000000002000000
+  m_InterestEffectiveness: 02000000020000000100000003000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
 --- !u!1 &6139464665412095872
