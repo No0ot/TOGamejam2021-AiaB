@@ -12,6 +12,8 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     GameObject ConfidenceMeter;
     [SerializeField]
+    GameObject ConfidenceMeterBackground;
+    [SerializeField]
     public int[] m_ActingEffectiveness;
     [SerializeField]
     public int[] m_CostumeEffectiveness;
@@ -28,6 +30,8 @@ public class CastMember : MonoBehaviour
 
     // Animation properties
     private SpriteRenderer m_sr;
+    private SpriteRenderer m_cmsr;
+    private SpriteRenderer m_cmbgsr;
     private bool fadingIn; // Whether the character is currently fading in or out.
     private float fadeTime; // Amount of time that the current animation should play for.
     private float elapsedTime; // Amount of time since the current animation started.
@@ -35,9 +39,17 @@ public class CastMember : MonoBehaviour
     private void Awake()
     {
         m_sr = GetComponent<SpriteRenderer>();
-        Color c = m_sr.color;
-        c.a = 0.0f;
-        m_sr.color = c;
+        m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
+        m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
+        
+        SpriteRenderer[] srs = { m_sr, m_cmsr, m_cmbgsr };
+        foreach (SpriteRenderer sr in srs)
+        {
+            Color c = sr.color;
+            c.a = 0.0f;
+            sr.color = c;
+        }
+        
         elapsedTime = 0.0f;
     }
 
@@ -59,18 +71,21 @@ public class CastMember : MonoBehaviour
                 gameObject.SetActive(false);
         }
 
-        if (gameObject.activeInHierarchy)
+        if (fadingIn) // The cast member fades out only after it survives or is eliminated, which always happens after it kills itself. In this way, this will only be called until the audition is over.
         {
-            if (m_fCurrentConfidence <= 0)
+            if (gameObject.activeInHierarchy)
             {
-                ConfidenceMeter.SetActive(false);
-                KillSelf();
+                if (m_fCurrentConfidence <= 0)
+                {
+                    ConfidenceMeter.SetActive(false);
+                    KillSelf();
+                }
             }
-        }
 
-        if(m_NumofAttacks == 3)
-        {
-            GameManager.Instance.OnSurvive(this.gameObject);
+            if (m_NumofAttacks == 3)
+            {
+                GameManager.Instance.OnSurvive(this.gameObject);
+            }
         }
     }
 
@@ -129,8 +144,13 @@ public class CastMember : MonoBehaviour
     {
         float t = Mathf.Clamp(elapsedTime / fadeTime, 0.0f, 1.0f);
         float a = fadingIn ? Mathf.Lerp(0.0f, 1.0f, t) : Mathf.Lerp(1.0f, 0.0f, t);
-        Color c = m_sr.color;
-        c.a = a;
-        m_sr.color = c;
+
+        SpriteRenderer[] srs = { m_sr, m_cmsr, m_cmbgsr };
+        foreach (SpriteRenderer sr in srs)
+        {
+            Color c = sr.color;
+            c.a = a;
+            sr.color = c;
+        }
     }
 }

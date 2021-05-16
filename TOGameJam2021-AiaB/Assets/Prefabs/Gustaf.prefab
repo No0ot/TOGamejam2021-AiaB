@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_fMaxConfidence: 50
   ConfidenceMeter: {fileID: 930814635333607097}
+  ConfidenceMeterBackground: {fileID: 6139464665412095872}
   m_ActingEffectiveness: 02000000020000000000000002000000
   m_CostumeEffectiveness: 01000000010000000100000001000000
   m_InterestEffectiveness: 02000000030000000100000001000000
