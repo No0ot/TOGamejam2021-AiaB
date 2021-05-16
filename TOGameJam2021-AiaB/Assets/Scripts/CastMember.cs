@@ -26,6 +26,7 @@ public class CastMember : MonoBehaviour
     public string m_CharacterDescription;
     [SerializeField]
     public string m_CharacterBio;
+    [SerializeField]
     public string m_CharacterName;
 
     private int m_attacksTakenInRound;
@@ -74,7 +75,6 @@ public class CastMember : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_CharacterName = gameObject.name;
         m_fCurrentConfidence = m_fMaxConfidence;
     }
 

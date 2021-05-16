@@ -187,6 +187,8 @@ MonoBehaviour:
   m_InterestEffectiveness: 03000000010000000100000000000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
+  m_CharacterBio: 
+  m_CharacterName: Trent
   m_SpeechBubble: {fileID: 6018713458461307333}
   m_SpeechText: {fileID: 680537576272134980}
   m_PerformanceText: All that glistens is not gold, man.

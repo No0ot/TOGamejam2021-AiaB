@@ -187,6 +187,8 @@ MonoBehaviour:
   m_InterestEffectiveness: 02000000030000000100000001000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
+  m_CharacterBio: 
+  m_CharacterName: Gustaf
   m_SpeechBubble: {fileID: 5995399108084210076}
   m_SpeechText: {fileID: 546219087390640391}
   m_PerformanceText: "Life\u2019s but a walking shadow, a poor player, that struts

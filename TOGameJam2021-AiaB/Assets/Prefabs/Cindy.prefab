@@ -187,6 +187,8 @@ MonoBehaviour:
   m_InterestEffectiveness: 02000000020000000200000001000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
+  m_CharacterBio: 
+  m_CharacterName: Cindy
   m_SpeechBubble: {fileID: 5877937984103989589}
   m_SpeechText: {fileID: 4105054017426039500}
   m_PerformanceText: Cowards die many times before their deaths; the valiant never

@@ -10,9 +10,9 @@ public class CharacterProfile : MonoBehaviour
     [SerializeField] Image Headshot;
     [SerializeField] Text ProfileName;
 
-    public void ChangeHeadshot(Image newImage)
+    public void ChangeHeadshot(Sprite newImage)
     {
-        Headshot = newImage;
+        Headshot.sprite = newImage;
     }
 
     public void ChangeDescription(string newDescription)

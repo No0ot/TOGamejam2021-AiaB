@@ -187,6 +187,8 @@ MonoBehaviour:
   m_InterestEffectiveness: 02000000010000000100000001000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
+  m_CharacterBio: 
+  m_CharacterName: Mark
   m_SpeechBubble: {fileID: 6789974461353806895}
   m_SpeechText: {fileID: 428716315789333006}
   m_PerformanceText: "What's in a name? Uhh\u2026 That which we call a rose By any

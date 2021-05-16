@@ -187,6 +187,8 @@ MonoBehaviour:
   m_InterestEffectiveness: 02000000010000000000000002000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
+  m_CharacterBio: 
+  m_CharacterName: Minnie
   m_SpeechBubble: {fileID: 8952480022751926511}
   m_SpeechText: {fileID: 462125066181646488}
   m_PerformanceText: If music be the food of love, play on.

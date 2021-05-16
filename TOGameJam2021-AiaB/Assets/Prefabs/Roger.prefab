@@ -187,6 +187,8 @@ MonoBehaviour:
   m_InterestEffectiveness: 02000000020000000100000003000000
   m_Headshot: {fileID: 0}
   m_CharacterDescription: blah blah blah
+  m_CharacterBio: 
+  m_CharacterName: Roger
   m_SpeechBubble: {fileID: 4787380498338731857}
   m_SpeechText: {fileID: 1817876970893735352}
   m_PerformanceText: "What\u2019s in a name? Ehem\u2026 A rose by any other name
