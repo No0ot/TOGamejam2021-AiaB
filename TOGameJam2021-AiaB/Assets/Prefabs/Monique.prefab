@@ -233,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412995699814375229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.34999996, y: 1, z: 0}
+  m_LocalPosition: {x: -0.59, y: 0.99, z: 0}
   m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 1}
   m_Children: []
   m_Father: {fileID: 1032588498197138940}
@@ -302,13 +302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d356cff2b1138459e6653ccb02ebbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: f84048790262ed249ae3c12a24d12b9b, type: 3}
-  - {fileID: 21300000, guid: 77643f1a0a288ac47a127d57fcfbd9c6, type: 3}
-  spriteSwitchFrequency: 0.51
-  fadeInDuration: 0.25
-  fullyVisibleDuration: 0.5
-  fadeOutDuration: 0.25
+  sprites: []
+  spriteSwitchFrequency: 0.3
+  fadeInDuration: 0.5
+  fullyVisibleDuration: 1.5
+  fadeOutDuration: 0.5
 --- !u!1 &2127880878482804435
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4815235449410183761}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26000008, y: 0.97, z: 0}
+  m_LocalPosition: {x: -0.04, y: 0.98, z: 0}
   m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 1}
   m_Children: []
   m_Father: {fileID: 1032588498197138940}
@@ -577,10 +575,10 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 52542d22a32b77e489fd217990244786, type: 3}
   - {fileID: 21300000, guid: 63247e0d5b6476945b28ec7f57d6f445, type: 3}
-  spriteSwitchFrequency: 0.51
-  fadeInDuration: 0.25
-  fullyVisibleDuration: 0.5
-  fadeOutDuration: 0.25
+  spriteSwitchFrequency: 0.3
+  fadeInDuration: 0.5
+  fullyVisibleDuration: 1.5
+  fadeOutDuration: 0.5
 --- !u!1 &5779178982900604712
 GameObject:
   m_ObjectHideFlags: 0

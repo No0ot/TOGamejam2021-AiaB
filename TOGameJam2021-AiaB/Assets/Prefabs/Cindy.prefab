@@ -473,13 +473,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d356cff2b1138459e6653ccb02ebbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: f84048790262ed249ae3c12a24d12b9b, type: 3}
-  - {fileID: 21300000, guid: 77643f1a0a288ac47a127d57fcfbd9c6, type: 3}
-  spriteSwitchFrequency: 0.51
-  fadeInDuration: 0.25
-  fullyVisibleDuration: 0.5
-  fadeOutDuration: 0.25
+  sprites: []
+  spriteSwitchFrequency: 0.3
+  fadeInDuration: 0.5
+  fullyVisibleDuration: 1.5
+  fadeOutDuration: 0.5
 --- !u!1 &5877937984103989589
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,7 +994,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 52542d22a32b77e489fd217990244786, type: 3}
   - {fileID: 21300000, guid: 63247e0d5b6476945b28ec7f57d6f445, type: 3}
-  spriteSwitchFrequency: 0.51
-  fadeInDuration: 0.25
-  fullyVisibleDuration: 0.5
-  fadeOutDuration: 0.25
+  spriteSwitchFrequency: 0.3
+  fadeInDuration: 0.5
+  fullyVisibleDuration: 1.5
+  fadeOutDuration: 0.5
