@@ -14,17 +14,19 @@ public class GameManager : MonoBehaviour
     [Tooltip("Complete list of all potential auditions, from which a random selection will be chosen.")]
     private List<GameObject> fullAuditionsList;
     private List<GameObject> selectedAuditionsList;
-    private GameObject currentAudition;
-    private List<GameObject> auditionsLeftInRound;
+    private List<GameObject> survivingAuditionsList;
     [SerializeField]
     [Tooltip("The number of auditions that will be chosen from the full list, must be less than the number of auditions in the list.")]
     [Range(1, 100)]
     private int numAuditions;
+    private GameObject currentAudition;
     [SerializeField]
     [Tooltip("The number of rounds that the player has in which to knock out all of the auditions.")]
     [Range(1, 100)]
     private int numRounds;
     private int currentRound;
+    private List<GameObject> auditionsLeftInRound;
+    private List<List<GameObject>> auditionsEliminatedByRound;
     [SerializeField]
     [Tooltip("The amount of time, in seconds, it takes for an actor to fade from view after their audition ends.")]
     [Range(0, 10)]
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
         List<GameObject> availableAuditionsList = new List<GameObject>();
         foreach (GameObject audition in fullAuditionsList)
             availableAuditionsList.Add(audition);
-
+        
         selectedAuditionsList = new List<GameObject>();
         for (int i = 0; i < numAuditions; i++)
         {
@@ -121,9 +123,11 @@ public class GameManager : MonoBehaviour
             availableAuditionsList.RemoveAt(r);
         }
 
+        survivingAuditionsList = new List<GameObject>();
         foreach (GameObject selectedAudition in selectedAuditionsList)
         {
             GameObject audition = Instantiate(selectedAudition);
+            survivingAuditionsList.Add(audition);
             audition.SetActive(false);
         }
     }
@@ -170,6 +174,11 @@ public class GameManager : MonoBehaviour
     {
         currentRound++;
         showingRecap = false;
+        if (survivingAuditionsList.Count < 1)
+        {
+            WinGame();
+            return;
+        }
         if (currentRound > numRounds)
         {
             LoseGame();
@@ -178,29 +187,18 @@ public class GameManager : MonoBehaviour
         else
         {
             // Ensure that the relevant lists are instantiated.
-            //if (auditionsEliminatedByRound == null)
-            //    auditionsEliminatedByRound = new List<List<GameObject>>();
-
-            // Add the new eliminations list for the new round
-            //auditionsEliminatedByRound.Add(new List<GameObject>());
-
-            // Shallow copy the survivors list to the new round's auditions list
-            //foreach (GameObject audition in survivingAuditionsList)
-            //    auditionsLeftInRound.Add(audition);
-            //survivingAuditionsList.Clear();
-
-            // Fill/Refill the auditions left in round with all the auditions not eliminated from the previous one.
+            if (auditionsEliminatedByRound == null)
+                auditionsEliminatedByRound = new List<List<GameObject>>();
             if (auditionsLeftInRound == null)
                 auditionsLeftInRound = new List<GameObject>();
-            foreach (GameObject audition in selectedAuditionsList)
-            {
-                CastMember cm = audition.GetComponent<CastMember>();
-                if (cm)
-                {
-                    if (cm.GetEliminatedInRound() == 0)
-                        auditionsLeftInRound.Add(audition);
-                }
-            }
+
+            // Add the new eliminations list for the new round
+            auditionsEliminatedByRound.Add(new List<GameObject>());
+
+            // Shallow copy the survivors list to the new round's auditions list
+            foreach (GameObject audition in survivingAuditionsList)
+                auditionsLeftInRound.Add(audition);
+            survivingAuditionsList.Clear();
         }
 
         NextAudition();
@@ -233,12 +231,14 @@ public class GameManager : MonoBehaviour
     // Callbacks
     public void OnSurvive(GameObject castMember)
     {
+        survivingAuditionsList.Add(castMember);
         InsultManager.Instance.OnAuditionEnded();
         currentAudition.GetComponent<CastMember>().OnFadeOut(fadeOutTime);
         timeSinceAuditionEnded = 0.0f;
     }
     public void OnEliminate(GameObject castMember)
     {
+        auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
         InsultManager.Instance.OnAuditionEnded();
         currentAudition.GetComponent<CastMember>().OnFadeOut(fadeOutTime);
         timeSinceAuditionEnded = 0.0f;
