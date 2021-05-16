@@ -149,6 +149,7 @@ public class CastMember : MonoBehaviour
                 if (m_fCurrentConfidence <= 0)
                 {
                     ConfidenceMeter.SetActive(false);
+                    InsultManager.Instance.OnStopCountdown();
                     KillSelf();
                 }
             }
