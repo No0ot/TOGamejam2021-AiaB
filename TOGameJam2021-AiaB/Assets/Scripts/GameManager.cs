@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
+    [Header("Game Parameters")]
     [SerializeField]
     [Tooltip("Should the order in which the auditions are presented be randomized each round?")]
     private bool randomizeAuditionOrder;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     [Range(1, 100)]
     private int numRounds;
     private int currentRound;
+
+    [Header("Timing Parameters")]
     [SerializeField]
     [Tooltip("The amount of time, in seconds, it takes for the actor to say their final lines before they begin to fade out.")]
     [Range(0, 10)]
@@ -48,6 +51,13 @@ public class GameManager : MonoBehaviour
     private bool canInsultWhileStillArriving;
     private bool arrivingOnStage;
     private bool showingRecap;
+
+    [Header("Visual Parameters")]
+    [SerializeField]
+    [Tooltip("The amount of the screen taken up by the actors when arrayed together in the recap screen.")]
+    [Range(0, 100)]
+    private float recapScreenPercent;
+
 
     private void Awake()
     {
@@ -87,7 +97,9 @@ public class GameManager : MonoBehaviour
                     timeSinceAuditionStarted = 0.0f; // When this reaches fadeInTime (or immediately if CanInsultWhileAnimating is true), this will cause update to call InsultManager.Instance.OnAuditionStarted())
                     arrivingOnStage = true;
                     currentAudition.SetActive(true);
-                    currentAudition.GetComponent<CastMember>().OnFadeIn(fadeInTime);
+                    CastMember cm = currentAudition.GetComponent<CastMember>();
+                    cm.SetSilent(false);
+                    cm.OnFadeIn(fadeInTime);
                 }
             }
             // The TimeSinceAuditionStarted does not tick up after the end of the previous audition, but it does not reset until the start of the new one (when the new actor starts fading in - after the auditionInterval).
@@ -133,7 +145,26 @@ public class GameManager : MonoBehaviour
     private void ShowRecapScene()
     {
         showingRecap = true;
-        Debug.Log("ShowRecapScene function not yet implemented.");
+        List<CastMember> cmlist = new List<CastMember>();
+        foreach (GameObject audition in selectedAuditionsList)
+        {
+            CastMember cm = audition.GetComponent<CastMember>();
+            if (cm.GetEliminatedInRound() == currentRound) // Actor was eliminated this round
+                cmlist.Add(cm);
+            if (cm.GetEliminatedInRound() == 0) // Actor is still in the game
+                cmlist.Add(cm);
+        }
+
+        int auditionsInRound = cmlist.Count;
+        float midpoint = auditionsInRound / 2.0f;
+        int i = 0;
+        foreach (CastMember cm in cmlist)
+        {
+            float pos = ((i - midpoint) / midpoint) * (Screen.width * recapScreenPercent);
+            cm.gameObject.transform.position = new Vector2(pos, 0.0f);
+            cm.SetSilent(true);
+            cm.OnFadeIn(1.0f);
+        }
     }
 
 

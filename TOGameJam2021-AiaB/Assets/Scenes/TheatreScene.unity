@@ -2255,10 +2255,12 @@ MonoBehaviour:
   - {fileID: 1032588498197138930, guid: b62339d616d1a4c4fa17918232057977, type: 3}
   numAuditions: 5
   numRounds: 3
+  finalSpeechTime: 2
   fadeOutTime: 2
   fadeInTime: 2
-  auditionInterval: 1
+  auditionInterval: 4.5
   canInsultWhileStillArriving: 0
+  recapScreenPercent: 60
 --- !u!4 &1872339686
 Transform:
   m_ObjectHideFlags: 0

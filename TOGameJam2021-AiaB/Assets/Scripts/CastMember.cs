@@ -52,6 +52,8 @@ public class CastMember : MonoBehaviour
     private float speechTime; // Amount of time that the final speech bubble stays up for before fading out can commence.
     private float elapsedTime; // Amount of time since the current animation started.
 
+    private bool silent;
+
     private void Awake()
     {
         m_sr = GetComponent<SpriteRenderer>();
@@ -92,7 +94,7 @@ public class CastMember : MonoBehaviour
             CalcOpacity();
             if (m_sr.color.a <= 0.0f)
                 gameObject.SetActive(false);
-            if (m_sr.color.a >= 1.0f)
+            if (m_sr.color.a >= 1.0f && !silent)
             {
                 m_SpeechBubble.SetActive(true);
                 m_SpeechText.gameObject.SetActive(true);
@@ -165,6 +167,18 @@ public class CastMember : MonoBehaviour
         m_eliminatedInRound = GameManager.Instance.GetCurrentRound();
         GameManager.Instance.OnEliminate(this.gameObject);
         //Removes itself from the gamemanagers list
+    }
+
+    public void SetSilent(bool value)
+    {
+        if (value == true)
+        {
+            silent = true;
+            m_SpeechBubble.SetActive(false);
+            m_SpeechText.gameObject.SetActive(false);
+        }
+        else
+            silent = false;
     }
 
     public void OnFadeIn(float secondsToFade)
