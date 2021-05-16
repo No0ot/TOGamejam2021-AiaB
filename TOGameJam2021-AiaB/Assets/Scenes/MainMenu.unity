@@ -1163,8 +1163,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1538,8 +1538,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2386,8 +2386,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2846,26 +2846,49 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ae07f20de90c76845b7ca269d2b34e6d, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: EffectiveHit
     clip: {fileID: 8300000, guid: 260a68d4b6006b44597bd27e97574e3a, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: NotVeryEffectiveHit
     clip: {fileID: 8300000, guid: 654ee323efd7eb24380d6b61196df4e5, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: NoEffectHit
     clip: {fileID: 8300000, guid: fcb415ac00e7e2d4799a766a26aa29ac, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: SuperEffectiveHit
     clip: {fileID: 8300000, guid: 7dab6c5dc04fa0e45894a0b3297a54f6, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BadPerformance
+    clip: {fileID: 8300000, guid: 112169cd426be6e408260439dca02043, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OKPerformance
+    clip: {fileID: 8300000, guid: 7f7f554332f3ac04aa4467e2877159cd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GoodPerformance
+    clip: {fileID: 8300000, guid: 3f8c394d106ccc84ca9ee52b0841c1ee, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &1743406703
 Transform:

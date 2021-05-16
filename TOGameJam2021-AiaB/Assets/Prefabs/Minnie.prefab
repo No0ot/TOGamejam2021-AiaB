@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Headshot: {fileID: 21300000, guid: 6f441ed35aa4e3c4c94c1f3af1b2b30f, type: 3}
   m_CharacterDescription: 'Experience: Participated in the Band every year Temperament:
     Musical Interests: Singing, Trumpet, performance '
-  m_CharacterName: 'Experience: Participated in the Band every year Temperament:
-    Musical Interests: Singing, Trumpet, performance '
+  m_CharacterName: Minnie
+  m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 8952480022751926511}
   m_SpeechText: {fileID: 462125066181646488}
   m_StatsText: {fileID: 5287007631925765905}

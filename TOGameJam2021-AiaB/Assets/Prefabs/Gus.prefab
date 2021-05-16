@@ -140,6 +140,7 @@ MonoBehaviour:
   m_CharacterDescription: 'Experience: None Temperament: Laid Back Interests: French
     Fries, Skateboarding, favorite hat '
   m_CharacterName: Gus
+  m_performanceSoundName: BadPerformance
   m_SpeechBubble: {fileID: 2669063144622932768}
   m_SpeechText: {fileID: 7864443100442726586}
   m_StatsText: {fileID: 7364738583768055967}
