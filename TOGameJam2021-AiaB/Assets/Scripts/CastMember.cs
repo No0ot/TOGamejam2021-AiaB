@@ -28,6 +28,7 @@ public class CastMember : MonoBehaviour
 
     private int m_attacksTakenInRound;
     private int m_attacksTakenInTotal;
+    private int m_hiddenAttacks;
     private float m_timeTakenInRound;
     private float m_timeTakenInTotal;
     private int m_eliminatedInRound;
@@ -118,7 +119,10 @@ public class CastMember : MonoBehaviour
                 {
                     m_SpeechBubble.SetActive(true);
                     m_SpeechText.gameObject.SetActive(true);
+                    
                     FindObjectOfType<AudioManager>().PlaySoundByName(m_performanceSoundName);
+                    
+                    InsultManager.Instance.OnStartCoundown();
                 }
                 else
                 {
@@ -149,11 +153,18 @@ public class CastMember : MonoBehaviour
                 }
             }
 
-            if (m_attacksTakenInRound == 3)
+            if (m_attacksTakenInRound + m_hiddenAttacks == 3)
             {
                 GameManager.Instance.OnSurvive(this.gameObject);
+                InsultManager.Instance.OnStopCountdown();
             }
         }
+    }
+
+
+    public SpriteRenderer GetSprite()
+    {
+        return SpriteReference;
     }
 
     public int GetNumAttacks()
@@ -169,6 +180,7 @@ public class CastMember : MonoBehaviour
     {
         switch(damagetype)
         {
+            case InsultDamageType.NO_INSULT_GIVEN:
             case InsultDamageType.NO_EFFECT:
                 //nothing
                 FindObjectOfType<AudioManager>().PlaySoundByName("NoEffectHit");
@@ -190,8 +202,16 @@ public class CastMember : MonoBehaviour
         }
         Vector3 ConfidencePercentage = new Vector3(m_fCurrentConfidence / m_fMaxConfidence, 1.0f,1.0f);
         ConfidenceMeter.transform.localScale = ConfidencePercentage;
-        m_attacksTakenInRound++;
-        m_attacksTakenInTotal++;
+        
+        if (damagetype == InsultDamageType.NO_INSULT_GIVEN)
+        {
+            m_hiddenAttacks++;   
+        }   
+        else
+        {
+            m_attacksTakenInRound++;
+            m_attacksTakenInTotal++;
+        }
         SpriteReference.sprite = AngryPose;
     }
 
@@ -277,6 +297,7 @@ public class CastMember : MonoBehaviour
     public void OnNextRound()
     {
         m_attacksTakenInRound = 0;
+        m_hiddenAttacks = 0;
         m_timeTakenInRound = 0;
         m_fCurrentConfidence = m_fMaxConfidence;
         Vector3 ConfidencePercentage = new Vector3(m_fCurrentConfidence / m_fMaxConfidence, 1.0f, 1.0f);

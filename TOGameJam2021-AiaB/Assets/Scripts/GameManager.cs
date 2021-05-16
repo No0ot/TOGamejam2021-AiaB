@@ -186,6 +186,8 @@ public class GameManager : MonoBehaviour
     {
         showingRecap = true;
         recapMenu.SetActive(true);
+        InsultManager.Instance.OnStopCountdown();
+
         List<CastMember> cmlist = new List<CastMember>();
         int survivors = 0;
         foreach (GameObject audition in selectedAuditionsList)
@@ -223,7 +225,7 @@ public class GameManager : MonoBehaviour
 
             if (cm.GetEliminatedInRound() == currentRound)
             {
-                SpriteRenderer sr = cm.GetComponent<SpriteRenderer>();
+                SpriteRenderer sr = cm.GetSprite();
                 sr.material = greyscaleMaterial;
                 Color c = sr.color;
                 c.r *= darkenAmount;
@@ -244,10 +246,21 @@ public class GameManager : MonoBehaviour
         List<CastMember> cmlist = new List<CastMember>();
         foreach (GameObject audition in selectedAuditionsList)
         {
-            if (audition.activeInHierarchy)
+            CastMember cm = audition.GetComponent<CastMember>();
+            if (cm)
             {
-                CastMember cm = audition.GetComponent<CastMember>();
-                cm.OnFadeOut(Mathf.Min(1.0f, auditionInterval));
+                SpriteRenderer sr = cm.GetSprite();
+                sr.material = defaultMaterial;
+                Color c = sr.color;
+                c.r = 1.0f;
+                c.g = 1.0f;
+                c.b = 1.0f;
+                sr.color = c;
+
+                if (audition.activeInHierarchy)
+                {
+                    cm.OnFadeOut(Mathf.Min(1.0f, auditionInterval));
+                }
             }
         }
     }

@@ -9,6 +9,7 @@ enum InsultType
     ACTING,
     COSTUME,
     INTEREST,
+    SILENCE,
     NUM_OF_INSULTS
 }
 
@@ -62,7 +63,12 @@ public class InsultManager : MonoBehaviour
     TMP_Text InsultText;
     [SerializeField]
     GameObject InsultSpeechBubble;
-
+    [SerializeField]
+    private float TimePerInsult;
+    private float TimeRemaining;
+    private bool CountingDown;
+    [SerializeField]
+    TMP_Text TimeText;
 
     InsultType insultType;
     // Start is called before the first frame update
@@ -74,9 +80,40 @@ public class InsultManager : MonoBehaviour
 
     private void Start()
     {
+        CountingDown = false;
         InsultText.color = new Color(0, 0, 0, 1);
+        TimeRemaining = TimePerInsult;
     }
 
+    private void Update()
+    {
+        if (CountingDown)
+            TimeRemaining -= Time.deltaTime;
+
+        if (TimeRemaining <= 0.0f)
+        {
+            if (!InsultSpeechBubble.activeInHierarchy)
+                InsultSpeechBubble.SetActive(true);
+            InsultText.text = "...";
+
+            GameManager.Instance.GetCurrentAudition().GetComponent<CastMember>().TakeDamage(InsultDamageType.NO_INSULT_GIVEN);
+
+            TimeRemaining = TimePerInsult;
+        }
+
+        TimeText.text = ((int)TimeRemaining).ToString();
+    }
+
+    public void OnStartCoundown()
+    {
+        CountingDown = true;
+    }
+
+    public void OnStopCountdown()
+    {
+        CountingDown = false;
+        TimeRemaining = TimePerInsult;
+    }
     public void DisplayActingInsults()
     {
         insultType = InsultType.ACTING;
@@ -322,5 +359,7 @@ public class InsultManager : MonoBehaviour
     {
         InsultSpeechBubble.SetActive(false);
         m_OverallUICanvas.SetActive(true);
+        TimeRemaining = TimePerInsult;
+        CountingDown = false;
     }
 }

@@ -9,6 +9,7 @@ public enum InsultDamageType
     MILDLY_EFFECTIVE,
     EFFECTIVE,
     SUPER_EFFECTIVE,
+    NO_INSULT_GIVEN,
     NUM_DAMAGE_TYPES
 }
 
