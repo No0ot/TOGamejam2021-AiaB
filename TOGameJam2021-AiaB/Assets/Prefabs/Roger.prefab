@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15fa233ab91adb34b9e14b243c02ec39, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_fMaxConfidence: 50
   ConfidenceMeter: {fileID: 930814635333607097}
   ConfidenceMeterBackground: {fileID: 6139464665412095872}
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_CostumeEffectiveness: 01000000010000000000000002000000
   m_InterestEffectiveness: 02000000020000000100000003000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: blah blah blah
-  m_CharacterBio:
+  m_CharacterDescription: 'Experience: None Temperament: Analytic Interests: School,
+    Math, DND '
   m_CharacterName: Roger
   m_SpeechBubble: {fileID: 4787380498338731857}
   m_SpeechText: {fileID: 1817876970893735352}
@@ -448,8 +448,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
