@@ -75,6 +75,9 @@ public class CastMember : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_sr = GetComponent<SpriteRenderer>();
+        m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
+        m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
         m_fCurrentConfidence = m_fMaxConfidence;
     }
 

@@ -120,6 +120,12 @@ public class GameManager : MonoBehaviour
             selectedAuditionsList.Add(availableAuditionsList[r]);
             availableAuditionsList.RemoveAt(r);
         }
+
+        foreach (GameObject selectedAudition in selectedAuditionsList)
+        {
+            GameObject audition = Instantiate(selectedAudition);
+            audition.SetActive(false);
+        }
     }
 
     // This function displays the recap scene at the end of the round, from which the player can then move on to the next round.
