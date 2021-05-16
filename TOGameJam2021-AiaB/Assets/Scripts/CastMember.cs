@@ -43,6 +43,19 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     string m_QuitQuote;
 
+    // Sprite References
+    [SerializeField]
+    SpriteRenderer SpriteReference;
+    [SerializeField]
+    Sprite BasePose;
+    [SerializeField]
+    Sprite PerformancePose;
+    [SerializeField]
+    Sprite AngryPose;
+    [SerializeField]
+    Sprite QuitPose;
+        
+
 
     // Animation properties
     private SpriteRenderer m_sr;
@@ -97,6 +110,7 @@ public class CastMember : MonoBehaviour
             CalcOpacity();
             if (elapsedTime > fadeTime + speechTime)
             {
+                SpriteReference.sprite = PerformancePose;
                 if (!fadingIn)
                     gameObject.SetActive(false);
                 else if (!silent)
@@ -176,10 +190,12 @@ public class CastMember : MonoBehaviour
         ConfidenceMeter.transform.localScale = ConfidencePercentage;
         m_attacksTakenInRound++;
         m_attacksTakenInTotal++;
+        SpriteReference.sprite = AngryPose;
     }
 
     void KillSelf()
     {
+        SpriteReference.sprite = QuitPose;
         m_SpeechText.text = m_QuitQuote;
         m_eliminatedInRound = GameManager.Instance.GetCurrentRound();
         GameManager.Instance.OnEliminate(this.gameObject);

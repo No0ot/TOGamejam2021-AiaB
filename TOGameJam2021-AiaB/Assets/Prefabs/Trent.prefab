@@ -196,6 +196,11 @@ MonoBehaviour:
   m_StatsText: {fileID: 8763226134357645823}
   m_PerformanceText: All that glistens is not gold, man.
   m_QuitQuote: 'These vibes are totally not cool man. Peace out. '
+  SpriteReference: {fileID: 3100751557751268530}
+  BasePose: {fileID: 21300000, guid: d2232e56f38ad3a4ba6680953b7025fb, type: 3}
+  PerformancePose: {fileID: 21300000, guid: 374638eabf3e5ea4da2ffe7f73fd8499, type: 3}
+  AngryPose: {fileID: 21300000, guid: c3ca02e34029807428722372646f5df3, type: 3}
+  QuitPose: {fileID: 21300000, guid: 2cab692fb2a5da446a1fb792ff17b9e3, type: 3}
 --- !u!1 &2917760301549766773
 GameObject:
   m_ObjectHideFlags: 0

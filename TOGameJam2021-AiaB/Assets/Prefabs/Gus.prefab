@@ -145,6 +145,11 @@ MonoBehaviour:
   m_StatsText: {fileID: 7364738583768055967}
   m_PerformanceText: What light through like, yonder window breaks, hehe
   m_QuitQuote: This is, like, the opposite of rad...
+  SpriteReference: {fileID: 2404988603022250725}
+  BasePose: {fileID: 21300000, guid: abb997f5924fd904cb3b44a37567a95f, type: 3}
+  PerformancePose: {fileID: 21300000, guid: 2b6c716dc2e3b444aa0baaa1b00d09dd, type: 3}
+  AngryPose: {fileID: 21300000, guid: 5496beba81a26dd4aba695768a3d797c, type: 3}
+  QuitPose: {fileID: 21300000, guid: 057375e0ba43634439765d4cc0462f79, type: 3}
 --- !u!212 &-7418822452725321115
 SpriteRenderer:
   m_ObjectHideFlags: 0

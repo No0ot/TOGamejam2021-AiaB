@@ -314,8 +314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Acting
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -448,8 +448,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choose Insult Type
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -661,8 +661,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Interests
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1193,8 +1193,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Costume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1472,7 +1472,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3166,7 +3166,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1749270287
 GameObject:
@@ -3582,8 +3582,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Win/Loss Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 193d39b1b459bf84d9fb1619b588cb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -146,6 +146,11 @@ MonoBehaviour:
   m_PerformanceText: "What's in a name? Uhh\u2026 That which we call a rose By any
     other word would smell as\u2026 Uhm... sweet\u2026? "
   m_QuitQuote: "Not cool Bro, I\u2019m out of here."
+  SpriteReference: {fileID: 1719479150889550763}
+  BasePose: {fileID: 21300000, guid: 509d3ebb78d9c344bbb279dc4e10c19c, type: 3}
+  PerformancePose: {fileID: 21300000, guid: 4e1c4dab47585a04eb0039fd4d8a2493, type: 3}
+  AngryPose: {fileID: 21300000, guid: 75fdd8e0b4448824e92356d2d028a89a, type: 3}
+  QuitPose: {fileID: 21300000, guid: d8570ab1ff0c0b14784016beb7c282cc, type: 3}
 --- !u!212 &2883170501194962816
 SpriteRenderer:
   m_ObjectHideFlags: 0

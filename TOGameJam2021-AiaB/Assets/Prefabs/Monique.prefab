@@ -145,6 +145,11 @@ MonoBehaviour:
   m_StatsText: {fileID: 3869990978249770829}
   m_PerformanceText: Romeo, Romeo! Wherefore are you Romeo?
   m_QuitQuote: Wha- This is unbelievable. I quit!
+  SpriteReference: {fileID: 3906838319802317483}
+  BasePose: {fileID: 21300000, guid: 339179b0ff9197a439256dd6834cb889, type: 3}
+  PerformancePose: {fileID: 21300000, guid: 7d72002c1f09d6b4cbc41296cef8f307, type: 3}
+  AngryPose: {fileID: 21300000, guid: ebbf47718fcb7234eaeb96b729d05aea, type: 3}
+  QuitPose: {fileID: 21300000, guid: fc63ec5d71c007045bccbf2304739416, type: 3}
 --- !u!212 &1013096318888157747
 SpriteRenderer:
   m_ObjectHideFlags: 0

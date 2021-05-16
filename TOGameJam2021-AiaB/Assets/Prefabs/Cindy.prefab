@@ -146,6 +146,11 @@ MonoBehaviour:
   m_PerformanceText: Cowards die many times before their deaths; the valiant never
     taste of death but once.
   m_QuitQuote: "This stinks. I\u2019m through with this"
+  SpriteReference: {fileID: 427785110819044651}
+  BasePose: {fileID: 21300000, guid: 733387bfad7835c45b60b5f3b424ab27, type: 3}
+  PerformancePose: {fileID: 21300000, guid: aa413ade4241f2540abf1a1483a92493, type: 3}
+  AngryPose: {fileID: 21300000, guid: 8a2caa624a736e8478091abe5adb59ca, type: 3}
+  QuitPose: {fileID: 21300000, guid: e39295741fb9e2648ab048c44be02187, type: 3}
 --- !u!212 &8853032955664199708
 SpriteRenderer:
   m_ObjectHideFlags: 0

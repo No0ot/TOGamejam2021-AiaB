@@ -147,6 +147,11 @@ MonoBehaviour:
     and frets his hour upon the stage, and then is heard no more; it is a tale told
     by an idiot, full of sound and fury, signifying nothing."
   m_QuitQuote: 'This production is a sham. I. am. out of here! '
+  SpriteReference: {fileID: 757506557726453676}
+  BasePose: {fileID: 21300000, guid: 70ef6c2a528ab6346bcf5d07a6e0d7cd, type: 3}
+  PerformancePose: {fileID: 21300000, guid: 706af51fc60856c40b459b0c01308ebc, type: 3}
+  AngryPose: {fileID: 21300000, guid: 1a83a058e87728f489b5a03fad64f0da, type: 3}
+  QuitPose: {fileID: 21300000, guid: 47b848428b689684296602ff74a4b4de, type: 3}
 --- !u!212 &-5947984819032469241
 SpriteRenderer:
   m_ObjectHideFlags: 0
