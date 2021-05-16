@@ -223,10 +223,14 @@ public class GameManager : MonoBehaviour
         return currentAudition;
     }
 
+    public int GetCurrentRound()
+    {
+        return currentRound;
+    }
+
     // Callbacks
     public void OnSurvive(GameObject castMember)
     {
-        Debug.Log("s");
         survivingAuditionsList.Add(castMember);
         InsultManager.Instance.OnAuditionEnded();
         currentAudition.GetComponent<CastMember>().OnFadeOut(fadeOutTime);
@@ -234,7 +238,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnEliminate(GameObject castMember)
     {
-        Debug.Log("e");
         auditionsEliminatedByRound[auditionsEliminatedByRound.Count - 1].Add(castMember);
         InsultManager.Instance.OnAuditionEnded();
         currentAudition.GetComponent<CastMember>().OnFadeOut(fadeOutTime);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class CastMember : MonoBehaviour
@@ -25,7 +26,21 @@ public class CastMember : MonoBehaviour
     public string m_CharacterDescription;
     public string m_CharacterName;
 
-    int m_NumofAttacks;
+    private int m_attacksTakenInRound;
+    private int m_attacksTakenInTotal;
+    private float m_timeTakenInRound;
+    private float m_timeTakenInTotal;
+    private int m_eliminatedInRound;
+
+    [SerializeField]
+    GameObject m_SpeechBubble;
+    [SerializeField]
+    TMP_Text m_SpeechText;
+    [SerializeField]
+    string m_PerformanceText;
+    [SerializeField]
+    string m_QuitQuote;
+
 
     // Animation properties
     private SpriteRenderer m_sr;
@@ -40,7 +55,7 @@ public class CastMember : MonoBehaviour
         m_sr = GetComponent<SpriteRenderer>();
         m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
-        
+
         SpriteRenderer[] srs = { m_sr, m_cmsr, m_cmbgsr };
         foreach (SpriteRenderer sr in srs)
         {
@@ -48,14 +63,18 @@ public class CastMember : MonoBehaviour
             c.a = 0.0f;
             sr.color = c;
         }
-        
+
         elapsedTime = 0.0f;
+
+        m_SpeechText.text = m_PerformanceText;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        m_CharacterName = gameObject.name;
+        m_sr = GetComponent<SpriteRenderer>();
+        m_cmsr = ConfidenceMeter.GetComponent<SpriteRenderer>();
+        m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
         m_fCurrentConfidence = m_fMaxConfidence;
     }
 
@@ -81,11 +100,20 @@ public class CastMember : MonoBehaviour
                 }
             }
 
-            if (m_NumofAttacks == 3)
+            if (m_attacksTakenInRound == 3)
             {
                 GameManager.Instance.OnSurvive(this.gameObject);
             }
         }
+    }
+
+    public int GetNumAttacks()
+    {
+        return m_attacksTakenInRound;
+    }
+    public int GetEliminatedInRound()
+    {
+        return m_eliminatedInRound;
     }
 
     public void TakeDamage(InsultDamageType damagetype)
@@ -109,11 +137,14 @@ public class CastMember : MonoBehaviour
         }
         Vector3 ConfidencePercentage = new Vector3(m_fCurrentConfidence / m_fMaxConfidence, 1.0f,1.0f);
         ConfidenceMeter.transform.localScale = ConfidencePercentage;
-        m_NumofAttacks++;
+        m_attacksTakenInRound++;
+        m_attacksTakenInTotal++;
     }
 
     void KillSelf()
     {
+        m_SpeechText.text = m_QuitQuote;
+        m_eliminatedInRound = GameManager.Instance.GetCurrentRound();
         GameManager.Instance.OnEliminate(this.gameObject);
         //Removes itself from the gamemanagers list
     }
@@ -150,5 +181,15 @@ public class CastMember : MonoBehaviour
             c.a = a;
             sr.color = c;
         }
+    }
+
+    private void DisplayPerformanceText()
+    {
+
+    }
+
+    private void DisplayQuitQuote()
+    {
+
     }
 }

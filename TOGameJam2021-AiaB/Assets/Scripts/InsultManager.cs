@@ -170,7 +170,7 @@ public class InsultManager : MonoBehaviour
                     if (usedinsult == m_InsultCards[i])
                     {
                         m_ActingInsultUsed[i] = true;
-                        Debug.Log("ACTINGINSULT" + i);
+                        //Debug.Log("ACTINGINSULT" + i);
 
                     }
                 }
@@ -181,7 +181,7 @@ public class InsultManager : MonoBehaviour
                     if (usedinsult == m_InsultCards[i])
                     {
                         m_CostumeInsultUsed[i] = true;
-                        Debug.Log("COSTUMEINSULT" + i);
+                        //Debug.Log("COSTUMEINSULT" + i);
                     }
                 }
                 break;
@@ -191,7 +191,7 @@ public class InsultManager : MonoBehaviour
                     if (usedinsult == m_InsultCards[i])
                     {
                         m_InterestInsultUsed[i] = true;
-                        Debug.Log("INTERESTINSULT" + i);
+                        //Debug.Log("INTERESTINSULT" + i);
                     }
                 }
                 break;
