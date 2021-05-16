@@ -76,6 +76,15 @@ public class GameManager : MonoBehaviour
     [Tooltip("Reference to the recap menu (next round button).")]
     private GameObject recapMenu;
     [SerializeField]
+    [Tooltip("Reference to the celebrate victory button.")]
+    private GameObject celebrateVictoryButton;
+    [SerializeField]
+    [Tooltip("Reference to the admit defeat button.")]
+    private GameObject AdmitDefeatButton;
+    [SerializeField]
+    [Tooltip("Reference to the next round button.")]
+    private GameObject NextRoundButton;
+    [SerializeField]
     [Tooltip("Reference to the win/Loss screen.")]
     private GameObject WinLossScreen;
     [SerializeField]
@@ -89,6 +98,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        WinLossScreen.SetActive(false);
+        NextRoundButton.SetActive(true);
+        AdmitDefeatButton.SetActive(true);
+        celebrateVictoryButton.SetActive(false);
+
         //Import the number of rounds and auditions from the settings set by user in main menu
         numRounds = PlayerPrefs.GetInt("NumberOfRounds") ;
         numAuditions = PlayerPrefs.GetInt("NumberOfAuditioners");
@@ -173,13 +187,24 @@ public class GameManager : MonoBehaviour
         showingRecap = true;
         recapMenu.SetActive(true);
         List<CastMember> cmlist = new List<CastMember>();
+        int survivors = 0;
         foreach (GameObject audition in selectedAuditionsList)
         {
             CastMember cm = audition.GetComponent<CastMember>();
             if (cm.GetEliminatedInRound() == currentRound) // Actor was eliminated this round
                 cmlist.Add(cm);
             else if (cm.GetEliminatedInRound() == 0) // Actor is still in the game
+            {
                 cmlist.Add(cm);
+                survivors++;
+            }
+        }
+
+        if (survivors < 1)
+        {
+            NextRoundButton.SetActive(false);
+            AdmitDefeatButton.SetActive(false);
+            celebrateVictoryButton.SetActive(true);
         }
 
         int auditionsInRound = cmlist.Count;
@@ -265,7 +290,7 @@ public class GameManager : MonoBehaviour
 
         if (currentRound > numRounds)
         {
-            LoseGame();
+            OnLoseGame();
             return;
         }
         else
@@ -287,20 +312,25 @@ public class GameManager : MonoBehaviour
                     cm.OnNextRound();
                 }
             }
+
+            if (auditionsLeftInRound.Count < 1)
+                OnWinGame();
         }
 
         timeSinceAuditionEnded = currentRound == 1 ? auditionInterval : 0.0f; // Will trigger NextAudition() when it reaches auditionInterval.
     }
 
-    private void LoseGame()
+    public void OnLoseGame()
     {
-        Debug.Log("LoseGame function not yet implemented.");
-        OnQuitGame();
+        HideRecapScreen();
+        WinLossScreen.SetActive(true);
+        WinLossText.text = "Sorry, looks like you're going to have to\nactually deal with some of these losers.";
     }
-    private void WinGame()
+    public void OnWinGame()
     {
-        Debug.Log("WinGame function not yet implemented.");
-        OnQuitGame();
+        HideRecapScreen();
+        WinLossScreen.SetActive(true);
+        WinLossText.text = "Congratulations, you may not have a production,\nbut at least you don't have any of these failures in the cast.";
     }
 
 
