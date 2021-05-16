@@ -185,7 +185,9 @@ MonoBehaviour:
   m_CostumeEffectiveness: 02000000010000000000000001000000
   m_InterestEffectiveness: 02000000010000000300000000000000
   m_Headshot: {fileID: 0}
-  m_CharacterDescription: blah blah blah
+  m_CharacterDescription: 'Gus: blah blah blah'
+  m_CharacterBio: 
+  m_CharacterName: Gus
 --- !u!1 &6139464665412095872
 GameObject:
   m_ObjectHideFlags: 0
