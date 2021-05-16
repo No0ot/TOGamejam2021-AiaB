@@ -194,14 +194,17 @@ public class CastMember : MonoBehaviour
                 FindObjectOfType<AudioManager>().PlaySoundByName("NoEffectHit");
                 break;
             case InsultDamageType.MILDLY_EFFECTIVE:
+                SpriteReference.sprite = AngryPose;
                 m_fCurrentConfidence -= 10.0f;
                 FindObjectOfType<AudioManager>().PlaySoundByName("NotVeryEffectiveHit");
                 break;
             case InsultDamageType.EFFECTIVE:
+                SpriteReference.sprite = AngryPose;
                 m_fCurrentConfidence -= 20.0f;
                 FindObjectOfType<AudioManager>().PlaySoundByName("EffectiveHit");
                 break;
             case InsultDamageType.SUPER_EFFECTIVE:
+                SpriteReference.sprite = AngryPose;
                 FindObjectOfType<AudioManager>().PlaySoundByName("SuperEffectiveHit");
                 m_fCurrentConfidence -= 40.0f;
                 if (AngerLines != null)
@@ -222,7 +225,7 @@ public class CastMember : MonoBehaviour
             m_attacksTakenInRound++;
             m_attacksTakenInTotal++;
         }
-        SpriteReference.sprite = AngryPose;
+        
 
         InsultManager.Instance.OnInsultGiven();
     }
