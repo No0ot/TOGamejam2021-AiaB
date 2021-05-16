@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
     }
     public void IncreaseNumberOfRounds()
     {
-        if (NumberOfRounds < 4) 
+        if (NumberOfRounds < 3) 
             NumberOfRounds++;
     }
     public void DecreaseNumberOfRounds()

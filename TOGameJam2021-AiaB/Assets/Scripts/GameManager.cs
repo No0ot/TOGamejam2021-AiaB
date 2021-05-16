@@ -291,7 +291,7 @@ public class GameManager : MonoBehaviour
 
         // Set any relevant visuals
         characterProfile.SetActive(true);
-        currentAudition.transform.position = Vector2.zero;
+        currentAudition.transform.position = new Vector2(0.0f, 0.5f);
 
         CastMember cm = currentAudition.GetComponent<CastMember>();
         if (cm)
