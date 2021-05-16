@@ -39,6 +39,8 @@ public class CastMember : MonoBehaviour
     [SerializeField]
     TMP_Text m_SpeechText;
     [SerializeField]
+    GameObject m_StatsBG;
+    [SerializeField]
     TMP_Text m_StatsText;
     [SerializeField]
     string m_PerformanceText;
@@ -106,6 +108,7 @@ public class CastMember : MonoBehaviour
         m_cmbgsr = ConfidenceMeterBackground.GetComponent<SpriteRenderer>();
         m_fCurrentConfidence = m_fMaxConfidence;
         m_SpeechText.color = new Color(0, 0, 0, 1);
+        m_StatsBG.SetActive(false);
         m_StatsText.text = "";
 
         CharacterEffect[] characterEffects = { SweatDrop, Sparkles, AngerLines };
@@ -146,6 +149,7 @@ public class CastMember : MonoBehaviour
                 }
                 else
                 {
+                    m_StatsBG.SetActive(true);
                     m_StatsText.text =
                         "Insults:\n" +
                         "Round: " + m_attacksTakenInRound + "\n" +
@@ -314,6 +318,7 @@ public class CastMember : MonoBehaviour
             m_SpeechBubble.SetActive(true);
             m_SpeechText.gameObject.SetActive(true);
         }
+        m_StatsBG.SetActive(false);
         m_StatsText.text = "";
     }
 

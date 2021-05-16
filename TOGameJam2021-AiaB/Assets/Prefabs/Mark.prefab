@@ -399,6 +399,7 @@ MonoBehaviour:
   m_performanceSoundName: BadPerformance
   m_SpeechBubble: {fileID: 799332347071462523}
   m_SpeechText: {fileID: 8062390146329977247}
+  m_StatsBG: {fileID: 125535884497864110}
   m_StatsText: {fileID: 5203097962980020303}
   m_PerformanceText: "What's in a name? Uhh\u2026 That which we call a rose By any
     other word would smell as\u2026 Uhm... sweet\u2026? "

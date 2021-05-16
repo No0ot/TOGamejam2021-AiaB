@@ -146,6 +146,7 @@ MonoBehaviour:
   m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 5877937984103989589}
   m_SpeechText: {fileID: 4105054017426039500}
+  m_StatsBG: {fileID: 3747381265142883961}
   m_StatsText: {fileID: 185336271861651809}
   m_PerformanceText: Cowards die many times before their deaths; the valiant never
     taste of death but once.

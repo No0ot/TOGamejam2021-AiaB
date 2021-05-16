@@ -316,6 +316,7 @@ MonoBehaviour:
   m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 1174437512397191591}
   m_SpeechText: {fileID: 8500220744961354338}
+  m_StatsBG: {fileID: 2466170881781945706}
   m_StatsText: {fileID: 7325631004736002665}
   m_PerformanceText: If music be the food of love, play on.
   m_QuitQuote: "I won\u2019t hear any more of this noise. I\u2019m out!"

@@ -588,6 +588,7 @@ MonoBehaviour:
   m_performanceSoundName: GoodPerformance
   m_SpeechBubble: {fileID: 5857743732082392047}
   m_SpeechText: {fileID: 940073285279352567}
+  m_StatsBG: {fileID: 3385513690419053466}
   m_StatsText: {fileID: 4351709940162685565}
   m_PerformanceText: "Life\u2019s but a walking shadow, a poor player, that struts
     and frets his hour upon the stage, and then is heard no more; it is a tale told

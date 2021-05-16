@@ -279,6 +279,7 @@ MonoBehaviour:
   m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 5461539869909308477}
   m_SpeechText: {fileID: 6673178482454638142}
+  m_StatsBG: {fileID: 529856245607260289}
   m_StatsText: {fileID: 7398912186430841155}
   m_PerformanceText: All that glistens is not gold, man.
   m_QuitQuote: 'These vibes are totally not cool man. Peace out. '

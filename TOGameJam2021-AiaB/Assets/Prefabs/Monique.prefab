@@ -64,6 +64,7 @@ MonoBehaviour:
   m_performanceSoundName: OKPerformance
   m_SpeechBubble: {fileID: 4259771993606971601}
   m_SpeechText: {fileID: 4440558757477614402}
+  m_StatsBG: {fileID: 3282517965543682780}
   m_StatsText: {fileID: 1987228069394187351}
   m_PerformanceText: Romeo, Romeo! Wherefore are you Romeo?
   m_QuitQuote: Wha- This is unbelievable. I quit!

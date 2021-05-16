@@ -248,6 +248,7 @@ MonoBehaviour:
   m_performanceSoundName: BadPerformance
   m_SpeechBubble: {fileID: 6023519944752163752}
   m_SpeechText: {fileID: 3655153458456811801}
+  m_StatsBG: {fileID: 1115231467301597051}
   m_StatsText: {fileID: 7064795766131420906}
   m_PerformanceText: What light through like, yonder window breaks, hehe
   m_QuitQuote: This is, like, the opposite of rad...
