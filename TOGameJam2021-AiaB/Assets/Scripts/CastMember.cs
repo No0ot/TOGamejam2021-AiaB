@@ -28,7 +28,11 @@ public class CastMember : MonoBehaviour
     public string m_CharacterBio;
     public string m_CharacterName;
 
-    int m_NumofAttacks;
+    private int m_attacksTakenInRound;
+    private int m_attacksTakenInTotal;
+    private float m_timeTakenInRound;
+    private float m_timeTakenInTotal;
+    private int m_eliminatedInRound;
 
     [SerializeField]
     GameObject m_SpeechBubble;
@@ -96,11 +100,20 @@ public class CastMember : MonoBehaviour
                 }
             }
 
-            if (m_NumofAttacks == 3)
+            if (m_attacksTakenInRound == 3)
             {
                 GameManager.Instance.OnSurvive(this.gameObject);
             }
         }
+    }
+
+    public int GetNumAttacks()
+    {
+        return m_attacksTakenInRound;
+    }
+    public int GetEliminatedInRound()
+    {
+        return m_eliminatedInRound;
     }
 
     public void TakeDamage(InsultDamageType damagetype)
@@ -124,12 +137,14 @@ public class CastMember : MonoBehaviour
         }
         Vector3 ConfidencePercentage = new Vector3(m_fCurrentConfidence / m_fMaxConfidence, 1.0f,1.0f);
         ConfidenceMeter.transform.localScale = ConfidencePercentage;
-        m_NumofAttacks++;
+        m_attacksTakenInRound++;
+        m_attacksTakenInTotal++;
     }
 
     void KillSelf()
     {
         m_SpeechText.text = m_QuitQuote;
+        m_eliminatedInRound = GameManager.Instance.GetCurrentRound();
         GameManager.Instance.OnEliminate(this.gameObject);
         //Removes itself from the gamemanagers list
     }
