@@ -90,6 +90,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the win/Loss text item.")]
     private TMP_Text WinLossText;
+    [SerializeField]
+    [Tooltip("Reference to the various background sprites.")]
+    Sprite[] BackgroundSprites;
+    [SerializeField]
+    [Tooltip("Reference to the background object.")]
+    SpriteRenderer Background;
 
     private void Awake()
     {
@@ -305,6 +311,9 @@ public class GameManager : MonoBehaviour
     private void NextRound()
     {
         currentRound++;
+        if (Background != null && BackgroundSprites.Length > 0)
+            Background.sprite = BackgroundSprites[Mathf.Clamp(currentRound - 1, 0, BackgroundSprites.Length)];
+
         HideRecapScreen();
 
         if (currentRound > numRounds)
