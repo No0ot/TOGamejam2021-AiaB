@@ -43,9 +43,12 @@ public class CharacterProfile : MonoBehaviour
 
     public void TriggerUpdate()
     {
-        GameObject audition = GameManager.Instance.GetCurrentAudition();
-        ChangeHeadshot(audition.GetComponent<CastMember>().m_Headshot);
-        ChangeDescription(audition.GetComponent<CastMember>().m_CharacterDescription);
-        ChangeName(audition.GetComponent<CastMember>().m_CharacterName);
+        if (GameManager.Instance.GetCurrentAudition())
+        {
+            GameObject audition = GameManager.Instance.GetCurrentAudition();
+            ChangeHeadshot(audition.GetComponent<CastMember>().m_Headshot);
+            ChangeDescription(audition.GetComponent<CastMember>().m_CharacterDescription);
+            ChangeName(audition.GetComponent<CastMember>().m_CharacterName);
+        }
     }
 }
