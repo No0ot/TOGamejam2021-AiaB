@@ -6,9 +6,20 @@ public class AudioManager : MonoBehaviour
 {
     //sound assets contain the sound file, a name for it, as well as volume and pitch to be played at
     public SoundAsset[] SoundAssets;
+    public static AudioManager instance;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
         foreach(SoundAsset s in SoundAssets)
         {
             s.source = gameObject.AddComponent<AudioSource>();

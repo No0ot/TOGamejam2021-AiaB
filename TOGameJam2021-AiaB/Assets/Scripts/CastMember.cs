@@ -154,14 +154,18 @@ public class CastMember : MonoBehaviour
         {
             case InsultDamageType.NO_EFFECT:
                 //nothing
+                FindObjectOfType<AudioManager>().PlaySoundByName("NoEffectHit");
                 break;
             case InsultDamageType.MILDLY_EFFECTIVE:
                 m_fCurrentConfidence -= 10.0f;
+                FindObjectOfType<AudioManager>().PlaySoundByName("NotVeryEffectiveHit");
                 break;
             case InsultDamageType.EFFECTIVE:
                 m_fCurrentConfidence -= 20.0f;
+                FindObjectOfType<AudioManager>().PlaySoundByName("EffectiveHit");
                 break;
             case InsultDamageType.SUPER_EFFECTIVE:
+                FindObjectOfType<AudioManager>().PlaySoundByName("SuperEffectiveHit");
                 m_fCurrentConfidence -= 40.0f;
                 break;
             default:
