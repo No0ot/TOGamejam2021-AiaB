@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 enum InsultType
@@ -71,7 +72,9 @@ public class InsultManager : MonoBehaviour
     private float TimeRemainingForResponse;
     private bool CountingDown;
     [SerializeField]
-    TMP_Text TimeText;
+    Image TimeSprite;
+    [SerializeField]
+    Sprite[] StopWatchSprites;
 
     InsultType insultType;
     // Start is called before the first frame update
@@ -113,8 +116,8 @@ public class InsultManager : MonoBehaviour
             TimeRemaining = TimePerInsult;
         }
 
-        TimeText.text = ((int)(TimeRemaining)).ToString();
-
+        //TimeText.text = ((int)(TimeRemaining)).ToString();
+        TimeSprite.sprite = StopWatchSprites[Mathf.Clamp((int)TimeRemaining, 0, 10)];
     }
 
     public void OnInsultGiven()
