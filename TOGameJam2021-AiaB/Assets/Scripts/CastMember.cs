@@ -53,7 +53,6 @@ public class CastMember : MonoBehaviour
     private float fadeTime; // Amount of time that the current animation should play for.
     private float speechTime; // Amount of time that the final speech bubble stays up for before fading out can commence.
     private float elapsedTime; // Amount of time since the current animation started.
-
     private bool silent;
 
     private void Awake()
