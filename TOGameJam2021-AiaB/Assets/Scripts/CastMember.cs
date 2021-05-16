@@ -277,6 +277,8 @@ public class CastMember : MonoBehaviour
         m_attacksTakenInRound = 0;
         m_timeTakenInRound = 0;
         m_fCurrentConfidence = m_fMaxConfidence;
+        Vector3 ConfidencePercentage = new Vector3(m_fCurrentConfidence / m_fMaxConfidence, 1.0f, 1.0f);
+        ConfidenceMeter.transform.localScale = ConfidencePercentage;
     }
 
     private void DisplayPerformanceText()
