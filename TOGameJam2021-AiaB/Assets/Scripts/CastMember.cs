@@ -107,8 +107,9 @@ public class CastMember : MonoBehaviour
                 else
                 {
                     m_StatsText.text =
-                        "Insults in round: " + m_attacksTakenInRound + "\n" +
-                        "Insults in total: " + m_attacksTakenInTotal;
+                        "Insults:\n" +
+                        "Round: " + m_attacksTakenInRound + "\n" +
+                        "Total: " + m_attacksTakenInTotal;
                 }
             }
         }
